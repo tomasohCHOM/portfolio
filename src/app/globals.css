@@ -6,10 +6,19 @@
 
 :root {
   font-family: "Montserrat", sans-serif;
+  --color-primary: 251, 253, 255;
+  --color-secondary: 245, 248, 253;
+  --color-contrast-muted: 221, 232, 250;
+  --color-contrast: 34, 193, 153;
+
+  background-color: rgb(var(--color-primary));
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-primary: 26, 33, 37;
+    --color-secondary: 45, 50, 55;
+    --color-contrast-muted: 51, 65, 85;
   }
 }
 
