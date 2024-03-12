@@ -3,8 +3,8 @@ import { FaDiscord, FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col gap-4 max-w-[45ch]">
-      <h1 className="font-bold text-5xl place-self-start">
+    <section className="flex max-w-[45ch] flex-col gap-4">
+      <h1 className="place-self-start text-5xl font-bold">
         Tomas <span className="text-contrast">Oh</span>
       </h1>
       <p>

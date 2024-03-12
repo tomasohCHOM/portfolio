@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface ProjectType {
@@ -45,7 +46,7 @@ const projects: ProjectType[] = [
     demoLink: "https://matrixpert.netlify.app/",
   },
   {
-    name: "CharRolesBot",
+    name: "char-roles-bot",
     description: "Assign/remove roles from a Smash Bros Discord server",
     tags: ["Deno", "TypeScript", "Discord REST API", "Smash Bros"],
     githubLink: "https://github.com/tomasohCHOM/char-roles-bot",
@@ -54,13 +55,27 @@ const projects: ProjectType[] = [
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className="rounded-xl shadow-md bg-secondary p-4">{project.name}</div>
+    <div className="flex gap-4 rounded-xl bg-secondary p-4 shadow-md">
+      <span className="overflow-hidden rounded-lg">
+        <Image
+          src={`/assets/projects/${project.name.toLowerCase()}.png`}
+          alt={`${project.name} image`}
+          className="aspect-[3/2] drop-shadow-md"
+          width={200}
+          height={200}
+        />
+      </span>
+      <div className="flex flex-col gap-2">
+        <h3 className="font-semibold">{project.name}</h3>
+        <p>{project.description}</p>
+      </div>
+    </div>
   );
 }
 
 export default function Projects() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2">
+    <section className="grid grid-cols-1 gap-4 ">
       {projects.map((project, i) => {
         return <Project project={project} key={`project-${i}`} />;
       })}

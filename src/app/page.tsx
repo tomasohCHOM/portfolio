@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex flex-col justify-center px-8 max-w-2xl mx-auto">
+      <main className="mx-auto flex max-w-2xl flex-col justify-center px-8">
         <Navbar />
         <div className="mt-8">
           <Hero />
