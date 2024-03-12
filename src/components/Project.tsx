@@ -86,7 +86,7 @@ function Skills() {
   return (
     <div className="flex flex-wrap gap-4">
       {skills.map((skill) => {
-        return <span>{skill}</span>;
+        return <span key={skill}>{skill}</span>;
       })}
     </div>
   );
@@ -94,20 +94,26 @@ function Skills() {
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className="flex flex-col gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:flex-row md:p-4">
+    <div className="flex h-full flex-col gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:flex-row md:p-4">
       <a
-        className="relative aspect-[3/2] w-full flex-shrink-0 cursor-pointer overflow-hidden rounded-lg sm:w-32"
+        className="relative aspect-[3/2] w-full flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:w-32 sm:rounded-lg"
         href={project.demoLink ?? project.githubLink}
       >
-        <Image
+        <img
           src={`/assets/projects/${project.name.toLowerCase()}.png`}
           alt={`${project.name} image`}
           className="object-contain object-center drop-shadow-md"
-          fill
         />
+        {/* <Image
+          src={`/assets/projects/${project.name.toLowerCase()}.png`}
+          alt={`${project.name} image`}
+          className="object-contain object-center drop-shadow-md"
+          priority
+          fill
+        /> */}
       </a>
       <div className="flex flex-col gap-2">
-        <h3 className="font-semibold">{project.name}</h3>
+        <h3 className="text-lg font-semibold">{project.name}</h3>
         <div className="flex flex-wrap items-center gap-1">
           {project.tags.map((tag) => {
             return <Tag text={tag} key={`project-tag-${tag}`} />;
@@ -121,13 +127,25 @@ function Project({ project }: { project: ProjectType }) {
 
 export default function Projects() {
   return (
-    <section className="mt-4 grid items-center justify-center gap-4 sm:grid-cols-2 md:grid-cols-1">
-      {projects.map((project, i) => {
-        return <Project project={project} key={`project-${i}`} />;
-      })}
-      <div>
-        <Skills />
-      </div>
-    </section>
+    <>
+      <h2 className="mt-8 text-3xl font-semibold">Projects</h2>
+      <p className="mt-2">
+        All of my projects are available on{" "}
+        <a
+          className="underline"
+          href="https://github.com/tomasohCHOM/?tab=repositories"
+        >
+          my GitHub.
+        </a>
+      </p>
+      <section className="mt-6 grid items-center justify-center gap-4 sm:grid-cols-2 md:grid-cols-1">
+        {projects.map((project, i) => {
+          return <Project project={project} key={`project-${i}`} />;
+        })}
+        <div>
+          <Skills />
+        </div>
+      </section>
+    </>
   );
 }

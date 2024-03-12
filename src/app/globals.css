@@ -21,6 +21,7 @@
     --color-primary: 26, 33, 37;
     --color-secondary: 45, 50, 55;
     --color-text: 248, 242, 246;
+    --color-contrast-muted: 57, 80, 78;
   }
 }
 
@@ -28,4 +29,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+[data-theme="dark"] {
+  --color-primary: 26, 33, 37;
+  --color-secondary: 45, 50, 55;
+  --color-text: 248, 242, 246;
+  --color-contrast-muted: 57, 80, 78;
 }
