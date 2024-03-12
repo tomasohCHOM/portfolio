@@ -4,7 +4,7 @@ const headerItems = ["Home", "Experience", "Projects", "Blog", "Extra"];
 
 export default function Navbar() {
   return (
-    <nav className="mx-auto flex items-center justify-center gap-3 border-b-[1px] border-slate-300 p-2">
+    <nav className="mx-auto flex items-center justify-center gap-2 border-b-[1px] border-slate-300 p-2 text-[0.75rem] md:gap-3 md:text-[1rem]">
       {headerItems.map((item, i) => (
         <a
           className={`cursor-pointer transition-all ease-in hover:text-[1.25rem] ${

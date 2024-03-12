@@ -9,7 +9,7 @@
   --color-primary: 251, 253, 253;
   --color-secondary: 245, 248, 253;
   --color-text: 56, 56, 56;
-  --color-contrast-muted: 221, 232, 250;
+  --color-contrast-muted: 221, 240, 238;
   --color-contrast: 34, 193, 153;
 
   background-color: rgb(var(--color-primary));

@@ -14,7 +14,7 @@ const projects: ProjectType[] = [
   {
     name: "Clubannounce",
     description: "UI Platform for drafting announcements within ACM at CSUF",
-    tags: ["SvelteKit", "TypeScript", "Sass", "DiscsordAPI"],
+    tags: ["SvelteKit", "TypeScript", "Sass", "DiscordAPI"],
     githubLink: "https://github.com/acmcsufoss/clubannounce",
   },
   {
@@ -41,7 +41,7 @@ const projects: ProjectType[] = [
   {
     name: "MatriXpert",
     description: "A Matrix calculator website",
-    tags: ["React.js", "React Router", "Sass", "Katex", "Linear Algebra"],
+    tags: ["React.js", "React Router", "Sass", "Linear Algebra"],
     githubLink: "https://github.com/tomasohCHOM/MatriXpert",
     demoLink: "https://matrixpert.netlify.app/",
   },
@@ -53,20 +53,66 @@ const projects: ProjectType[] = [
   },
 ];
 
+const skills = [
+  "C++",
+  "Python",
+  "TypeScript",
+  "JavaScript",
+  "Java",
+  "Rust",
+  "SQL",
+];
+
+const webdevSkills = [
+  "ReactJS",
+  "Svelte",
+  "Nextjs",
+  "TailwindCSS",
+  "Sass",
+  "Deno",
+  "Prisma",
+  "Vercel",
+];
+
+function Tag({ text }: { text: string }) {
+  return (
+    <span className="rounded-xl bg-contrast_muted px-2 font-semibold text-contrast">
+      {text}
+    </span>
+  );
+}
+
+function Skills() {
+  return (
+    <div className="flex flex-wrap gap-4">
+      {skills.map((skill) => {
+        return <span>{skill}</span>;
+      })}
+    </div>
+  );
+}
+
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className="flex gap-4 rounded-xl bg-secondary p-4 shadow-md">
-      <span className="overflow-hidden rounded-lg">
+    <div className="flex flex-col gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:flex-row md:p-4">
+      <a
+        className="relative aspect-[3/2] w-full flex-shrink-0 cursor-pointer overflow-hidden rounded-lg sm:w-32"
+        href={project.demoLink ?? project.githubLink}
+      >
         <Image
           src={`/assets/projects/${project.name.toLowerCase()}.png`}
           alt={`${project.name} image`}
-          className="aspect-[3/2] drop-shadow-md"
-          width={200}
-          height={200}
+          className="object-contain object-center drop-shadow-md"
+          fill
         />
-      </span>
+      </a>
       <div className="flex flex-col gap-2">
         <h3 className="font-semibold">{project.name}</h3>
+        <div className="flex flex-wrap items-center gap-1">
+          {project.tags.map((tag) => {
+            return <Tag text={tag} key={`project-tag-${tag}`} />;
+          })}
+        </div>
         <p>{project.description}</p>
       </div>
     </div>
@@ -75,10 +121,13 @@ function Project({ project }: { project: ProjectType }) {
 
 export default function Projects() {
   return (
-    <section className="grid grid-cols-1 gap-4 ">
+    <section className="mt-4 grid items-center justify-center gap-4 sm:grid-cols-2 md:grid-cols-1">
       {projects.map((project, i) => {
         return <Project project={project} key={`project-${i}`} />;
       })}
+      <div>
+        <Skills />
+      </div>
     </section>
   );
 }

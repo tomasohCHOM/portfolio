@@ -25,16 +25,16 @@ export default function Hero() {
 
       <div className="flex gap-3">
         <a href="https://github.com/tomasohCHOM">
-          <FaGithub size={32} />
+          <FaGithub size={24} />
         </a>
         <a href="https://github.com/tomasohCHOM">
-          <FaLinkedin size={32} />
+          <FaLinkedin size={24} />
         </a>
         <a href="https://github.com/tomasohCHOM">
-          <FaDiscord size={32} />
+          <FaDiscord size={24} />
         </a>
         <a href="https://github.com/tomasohCHOM">
-          <FaPaperPlane size={32} />
+          <FaPaperPlane size={24} />
         </a>
       </div>
     </section>
