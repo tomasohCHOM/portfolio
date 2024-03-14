@@ -96,7 +96,7 @@ function Project({ project }: { project: ProjectType }) {
   return (
     <div className="flex h-full flex-col gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:flex-row md:p-4">
       <a
-        className="relative aspect-[3/2] w-full flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:w-32 sm:rounded-lg"
+        className="relative aspect-[1.57142857] w-full flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:w-32 sm:rounded-lg"
         href={project.demoLink ?? project.githubLink}
       >
         <img

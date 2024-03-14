@@ -1,3 +1,5 @@
+import Experience from "@/components/Experience";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -12,8 +14,10 @@ export default function Home() {
         <div className="mt-8">
           <Hero />
           <Projects />
+          <Experience />
         </div>
       </main>
+      <Footer />
     </>
   );
 }
