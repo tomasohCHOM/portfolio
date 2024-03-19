@@ -7,7 +7,7 @@
 :root {
   font-family: "Montserrat", sans-serif;
   --color-primary: 251, 253, 253;
-  --color-secondary: 245, 248, 253;
+  --color-secondary: 246, 248, 250;
   --color-text: 56, 56, 56;
   --color-contrast-muted: 221, 240, 238;
   --color-contrast: 34, 193, 153;
@@ -23,6 +23,14 @@
     --color-text: 248, 242, 246;
     --color-contrast-muted: 57, 80, 78;
   }
+}
+
+html {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 *,

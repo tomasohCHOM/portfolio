@@ -1,6 +1,6 @@
 import React from "react";
 
-const headerItems = ["Home", "Experience", "Projects", "Blog", "Extra"];
+const headerItems = ["Home", "Experience", "Projects", "Extra"];
 
 export default function Navbar() {
   return (
