@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { FaAlignRight } from "react-icons/fa";
 
 export default function Header() {
@@ -16,16 +16,19 @@ export default function Header() {
   return (
     <header className="relative flex items-center justify-between px-8 py-8 md:py-4">
       <span className="italic">Tomas Oh</span>
-      <button onBlur={() => setIsOpen(!isOpen)} onFocus={() => setIsOpen(true)}>
+      <button
+        onBlur={() => setIsOpen(!theme)}
+        onMouseDown={() => setIsOpen(true)}
+      >
         <FaAlignRight size={16} />
       </button>
 
       <div
-        className={`absolute right-8 top-16 flex flex-col rounded-lg bg-secondary text-sm font-semibold transition-all md:top-12
+        className={`absolute right-8 top-16 flex flex-col rounded-lg bg-secondary text-sm font-semibold transition-transform md:top-12
         ${isOpen ? "scale-100" : "scale-0"}`}
       >
         <button
-          onClick={changeTheme}
+          onMouseDown={changeTheme}
           className="w-full p-2 text-start transition hover:backdrop-brightness-105"
         >
           Switch Themes

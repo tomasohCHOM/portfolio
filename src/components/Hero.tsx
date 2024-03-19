@@ -8,7 +8,7 @@ export default function Hero() {
         Tomas <span className="text-contrast">Oh</span>
       </h1>
       <p>
-        Currently pursuing a bachelor's in{" "}
+        Currently pursuing a bachelor&apos;s in{" "}
         <span className="font-semibold">Computer Science</span> at California
         State University, Fullerton , with a minor in Mathematics. I find joy in{" "}
         <span className="font-semibold">exploring</span> technologies and{" "}
