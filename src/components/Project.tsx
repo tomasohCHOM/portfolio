@@ -53,53 +53,11 @@ const projects: ProjectType[] = [
   },
 ];
 
-const skills = [
-  "CPP",
-  "Python",
-  "TypeScript",
-  "JavaScript",
-  "Java",
-  "Rust",
-  "HTML",
-  "CSS",
-  "ReactJS",
-  "Svelte",
-  "Next.js",
-  "Node.js",
-  "TailwindCSS",
-  "Sass",
-  "Deno",
-  "Prisma",
-];
-
 function Tag({ text }: { text: string }) {
   return (
     <span className="rounded-xl bg-contrast_muted px-2 font-semibold text-contrast">
       {text}
     </span>
-  );
-}
-
-function Skills() {
-  return (
-    <>
-      <h2 className="mt-8 text-3xl font-semibold">Skills</h2>
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {skills.map((skill) => {
-          return (
-            <span
-              className="flex h-16 rounded-lg bg-secondary p-3 shadow-sm"
-              key={skill}
-            >
-              <img
-                src={`/assets/skills/${skill.split(".").join("").toLowerCase()}.png`}
-                className="w-10 items-center justify-center object-contain"
-              />
-            </span>
-          );
-        })}
-      </div>
-    </>
   );
 }
 
@@ -154,9 +112,6 @@ export default function Projects() {
           return <Project project={project} key={`project-${i}`} />;
         })}
       </section>
-      <div>
-        <Skills />
-      </div>
     </>
   );
 }
