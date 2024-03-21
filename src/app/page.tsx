@@ -13,8 +13,8 @@ export default function Home() {
         <Navbar />
         <div className="mt-8">
           <Hero />
-          <Projects />
           <Experience />
+          <Projects />
         </div>
       </main>
       <Footer />
