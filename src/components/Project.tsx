@@ -66,6 +66,7 @@ function Project({ project }: { project: ProjectType }) {
     <div className="flex h-full flex-col gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:flex-row md:p-4">
       <a
         className="relative aspect-[1.57142857] w-full flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:w-32 sm:rounded-lg"
+        target="_blank"
         href={project.demoLink ?? project.githubLink}
       >
         <img
@@ -102,6 +103,7 @@ export default function Projects() {
         All of my projects are available on{" "}
         <a
           className="underline"
+          target="_blank"
           href="https://github.com/tomasohCHOM/?tab=repositories"
         >
           my GitHub.

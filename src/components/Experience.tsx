@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 interface ExperienceType {
   title: string;
@@ -53,15 +55,44 @@ const skills = [
   "Prisma",
 ];
 
-function ExperienceBar({ experience }: { experience: ExperienceType[] }) {
+function ExperienceTop({
+  experience,
+  currExperience,
+}: {
+  experience: ExperienceType[];
+  currExperience: number;
+}) {
   return (
     <div className="flex cursor-pointer items-center justify-center gap-8">
-      {experience.map((exp) => {
+      {experience.map((exp, i) => {
         return (
           <span
-            className="h-6 w-6 rounded-[50%] border-2 border-contrast transition hover:bg-contrast"
+            className={`h-4 w-4 rounded-[50%] border-2 border-contrast transition ${currExperience === i ? "bg-contrast" : ""}`}
             key={`experience-sidebar-${exp.title}`}
           />
+        );
+      })}
+    </div>
+  );
+}
+
+function ExperienceBar({
+  experience,
+  currExperience,
+}: {
+  experience: ExperienceType[];
+  currExperience: number;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      {experience.map((exp, i) => {
+        return (
+          <span
+            className="border-b-2 border-contrast p-2"
+            key={`experience-sidebar-${i}`}
+          >
+            {exp.title}
+          </span>
         );
       })}
     </div>
@@ -92,28 +123,35 @@ function Skills() {
 }
 
 export default function Experience() {
+  const [experienceItem, setExperienceItem] = useState(0);
+
   return (
     <>
       <h2 className="mt-8 text-3xl font-semibold">Experience</h2>
-      <ExperienceBar experience={experiences} />
-      <section className="mt-8 flex flex-col items-center justify-center gap-4">
-        {experiences.map((experience) => {
-          return (
-            <div
-              className="flex max-h-max w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
-              key={experience.title}
-            >
-              <div>
-                <h3 className="text-lg font-semibold">{experience.title}</h3>
-                <p className="text-sm">{experience.location}</p>
-                <p className="text-sm text-slate-300">
-                  {experience.timePeriod}
-                </p>
-              </div>
-              <p className="leading-[1.625rem]">{experience.description}</p>
-            </div>
-          );
-        })}
+      <ExperienceTop experience={experiences} currExperience={experienceItem} />
+
+      <section className="mt-8 flex items-center justify-center gap-4">
+        <ExperienceBar
+          experience={experiences}
+          currExperience={experienceItem}
+        />
+        <div
+          className="flex max-h-max w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
+          key={experiences[experienceItem].title}
+        >
+          <div>
+            <h3 className="text-lg font-semibold">
+              {experiences[experienceItem].title}
+            </h3>
+            <p className="text-sm">{experiences[experienceItem].location}</p>
+            <p className="text-sm text-slate-300">
+              {experiences[experienceItem].timePeriod}
+            </p>
+          </div>
+          <p className="leading-[1.625rem]">
+            {experiences[experienceItem].description}
+          </p>
+        </div>
       </section>
       <div>
         <Skills />

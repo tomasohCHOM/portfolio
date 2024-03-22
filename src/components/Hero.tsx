@@ -24,16 +24,16 @@ export default function Hero() {
       </p>
 
       <div className="flex gap-3">
-        <a href="https://github.com/tomasohCHOM">
+        <a target="_blank" href="https://github.com/tomasohCHOM">
           <FaGithub size={24} />
         </a>
-        <a href="https://github.com/tomasohCHOM">
+        <a target="_blank" href="https://github.com/tomasohCHOM">
           <FaLinkedin size={24} />
         </a>
-        <a href="https://github.com/tomasohCHOM">
+        <a target="_blank" href="https://github.com/tomasohCHOM">
           <FaDiscord size={24} />
         </a>
-        <a href="https://github.com/tomasohCHOM">
+        <a target="_blank" href="https://github.com/tomasohCHOM">
           <FaPaperPlane size={24} />
         </a>
       </div>
