@@ -15,7 +15,7 @@ const experiences: ExperienceType[] = [
     location: "California State University, Fullerton",
     timePeriod: "Jan 2024 - Present",
     description: `Hosted biweekly workshop seessions, integrating interactive and collaborative 
-       study techniques. Enhanced student learning of Calculus III concepts through 
+       study techniques. Enhanced student learning of Multivariable Calculus concepts through 
        peer discussion and participation, resulting in a 10% average grade increase`,
   },
   {
@@ -79,17 +79,20 @@ function ExperienceTop({
 function ExperienceBar({
   experience,
   currExperience,
+  setExperienceItem,
 }: {
   experience: ExperienceType[];
   currExperience: number;
+  setExperienceItem: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
     <div className="flex flex-col gap-2">
       {experience.map((exp, i) => {
         return (
           <span
-            className="border-b-2 border-contrast p-2"
+            className={`cursor-pointer rounded-lg p-2 text-sm transition ${currExperience === i ? "bg-secondary" : "hover:underline"}`}
             key={`experience-sidebar-${i}`}
+            onClick={() => setExperienceItem(i)}
           >
             {exp.title}
           </span>
@@ -130,10 +133,11 @@ export default function Experience() {
       <h2 className="mt-8 text-3xl font-semibold">Experience</h2>
       <ExperienceTop experience={experiences} currExperience={experienceItem} />
 
-      <section className="mt-8 flex items-center justify-center gap-4">
+      <section className="mt-8 flex gap-4">
         <ExperienceBar
           experience={experiences}
           currExperience={experienceItem}
+          setExperienceItem={setExperienceItem}
         />
         <div
           className="flex max-h-max w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
@@ -143,10 +147,10 @@ export default function Experience() {
             <h3 className="text-lg font-semibold">
               {experiences[experienceItem].title}
             </h3>
-            <p className="text-sm">{experiences[experienceItem].location}</p>
-            <p className="text-sm text-slate-300">
-              {experiences[experienceItem].timePeriod}
+            <p className="text-sm font-medium">
+              {experiences[experienceItem].location}
             </p>
+            <p className="text-sm">{experiences[experienceItem].timePeriod}</p>
           </div>
           <p className="leading-[1.625rem]">
             {experiences[experienceItem].description}
