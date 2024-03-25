@@ -1,57 +1,6 @@
+import { ProjectType } from "@/data/types";
 import Image from "next/image";
 import React from "react";
-
-interface ProjectType {
-  name: string;
-  description: string;
-  tags: string[];
-  imgSrc?: string;
-  githubLink: string;
-  demoLink?: string;
-}
-
-const projects: ProjectType[] = [
-  {
-    name: "Clubannounce",
-    description: "UI Platform for drafting announcements within ACM at CSUF",
-    tags: ["SvelteKit", "TypeScript", "Sass", "DiscordAPI"],
-    githubLink: "https://github.com/acmcsufoss/clubannounce",
-  },
-  {
-    name: "Fullyhacks",
-    description: "Website for the largest hackathon at CSUF (2024)",
-    tags: ["Next.js", "TypeScript", "TailwindCSS", "Prisma", "MongoDB"],
-    githubLink: "https://github.com/tomasohCHOM/fourJSFrameworksOneApp",
-    demoLink: "https://fullyhacks.acmcsuf.com/",
-  },
-  {
-    name: "QuizZard",
-    description: "Quiz application for interactive learning",
-    tags: ["SvelteKit", "TypeScript", "TailwindCSS", "Supabase", "Learning"],
-    githubLink: "https://github.com/tomasohCHOM/QuizZard",
-    demoLink: "https://quizzardgame.vercel.app/",
-  },
-  {
-    name: "Devdle",
-    description: "Wordle clone with SWE terms",
-    tags: ["SvelteKit", "TypeScript", "Sass", "SWE", "Web development"],
-    githubLink: "https://github.com/tomasohCHOM/Devdle",
-    demoLink: "https://devdlegame.vercel.app/",
-  },
-  {
-    name: "MatriXpert",
-    description: "A Matrix calculator website",
-    tags: ["React.js", "React Router", "Sass", "Linear Algebra"],
-    githubLink: "https://github.com/tomasohCHOM/MatriXpert",
-    demoLink: "https://matrixpert.netlify.app/",
-  },
-  {
-    name: "char-roles-bot",
-    description: "Assign/remove roles from a Smash Bros Discord server",
-    tags: ["Deno", "TypeScript", "Discord REST API", "Smash Bros"],
-    githubLink: "https://github.com/tomasohCHOM/char-roles-bot",
-  },
-];
 
 function Tag({ text }: { text: string }) {
   return (
@@ -95,7 +44,7 @@ function Project({ project }: { project: ProjectType }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <>
       <h2 className="mt-8 text-3xl font-semibold">Projects</h2>

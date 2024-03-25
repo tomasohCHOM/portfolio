@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Project";
+import { experiences, projects, skills } from "@/data/selfInfo";
 
 export default function Home() {
   return (
@@ -13,8 +14,8 @@ export default function Home() {
         <Navbar />
         <div className="mt-8">
           <Hero />
-          <Experience />
-          <Projects />
+          <Experience experiences={experiences} skills={skills} />
+          <Projects projects={projects} />
         </div>
       </main>
       <Footer />

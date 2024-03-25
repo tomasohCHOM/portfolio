@@ -1,59 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
-interface ExperienceType {
-  title: string;
-  location: string;
-  timePeriod: string;
-  description: string;
-}
-
-const experiences: ExperienceType[] = [
-  {
-    title: "Supplemental Instruction",
-    location: "California State University, Fullerton",
-    timePeriod: "Jan 2024 - Present",
-    description: `Hosted biweekly workshop seessions, integrating interactive and collaborative 
-       study techniques. Enhanced student learning of Multivariable Calculus concepts through 
-       peer discussion and participation, resulting in a 10% average grade increase`,
-  },
-  {
-    title: "Research Assistant",
-    location: "Project ACCESS at CSUF",
-    timePeriod: "Feb 2024 - Present",
-    description: `Participated in a year-long research program, engaging in data science and 
-        cybersecurity projects to raise awareness on social just issues. Attended several workshops
-        on topics such as study skills, career opportunities, and C++ programming`,
-  },
-  {
-    title: "ACM Board Member & Contributor",
-    location: "Association for Computer Machinery at CSUF",
-    timePeriod: "Aug 2023 - Present",
-    description: `Led and organized workshops on several technologies such as SvelteKit and VIM. 
-        Collaborated with fellow students to develop open source projects, including the website 
-        for FullyHacks (largest hackathon at CSUF) using Next.js, TypeScript, and TailwindCSS.`,
-  },
-];
-
-const skills = [
-  "CPP",
-  "Python",
-  "TypeScript",
-  "JavaScript",
-  "Java",
-  "Rust",
-  "HTML",
-  "CSS",
-  "ReactJS",
-  "Svelte",
-  "Next.js",
-  "Node.js",
-  "TailwindCSS",
-  "Sass",
-  "Deno",
-  "Prisma",
-];
+import type { ExperienceType } from "@/data/types";
 
 function ExperienceTop({
   experience,
@@ -102,7 +50,7 @@ function ExperienceBar({
   );
 }
 
-function Skills() {
+function Skills({ skills }: { skills: string[] }) {
   return (
     <>
       <h2 className="mt-8 text-3xl font-semibold">Skills</h2>
@@ -125,7 +73,13 @@ function Skills() {
   );
 }
 
-export default function Experience() {
+export default function Experience({
+  experiences,
+  skills,
+}: {
+  experiences: ExperienceType[];
+  skills: string[];
+}) {
   const [experienceItem, setExperienceItem] = useState(0);
 
   return (
@@ -158,7 +112,7 @@ export default function Experience() {
         </div>
       </section>
       <div>
-        <Skills />
+        <Skills skills={skills} />
       </div>
     </>
   );
