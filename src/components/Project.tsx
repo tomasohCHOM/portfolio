@@ -19,7 +19,7 @@ const projects: ProjectType[] = [
   },
   {
     name: "Fullyhacks",
-    description: "Website for the largest hackathon at CSUF",
+    description: "Website for the largest hackathon at CSUF (2024)",
     tags: ["Next.js", "TypeScript", "TailwindCSS", "Prisma", "MongoDB"],
     githubLink: "https://github.com/tomasohCHOM/fourJSFrameworksOneApp",
     demoLink: "https://fullyhacks.acmcsuf.com/",
@@ -55,7 +55,7 @@ const projects: ProjectType[] = [
 
 function Tag({ text }: { text: string }) {
   return (
-    <span className="rounded-xl bg-contrast_muted px-2 font-semibold text-contrast">
+    <span className="rounded-xl bg-contrast_muted px-2 text-[12px] font-semibold text-contrast">
       {text}
     </span>
   );
@@ -63,9 +63,9 @@ function Tag({ text }: { text: string }) {
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className="flex h-full flex-col gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:flex-row md:p-4">
+    <div className="flex h-full max-w-[20rem] flex-col items-center gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:max-w-full md:flex-col md:p-4">
       <a
-        className="relative aspect-[1.57142857] w-full flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:w-32 sm:rounded-lg"
+        className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg"
         target="_blank"
         href={project.demoLink ?? project.githubLink}
       >
@@ -83,13 +83,13 @@ function Project({ project }: { project: ProjectType }) {
         /> */}
       </a>
       <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-semibold">{project.name}</h3>
-        <div className="flex flex-wrap items-center gap-1">
+        <h3 className="text-center text-lg font-semibold">{project.name}</h3>
+        <p className="max-w-[35ch] text-center">{project.description}</p>
+        <div className="flex flex-wrap items-center justify-center gap-1">
           {project.tags.map((tag) => {
             return <Tag text={tag} key={`project-tag-${tag}`} />;
           })}
         </div>
-        <p>{project.description}</p>
       </div>
     </div>
   );
@@ -109,7 +109,7 @@ export default function Projects() {
           my GitHub.
         </a>
       </p>
-      <section className="mt-6 grid items-center justify-center gap-4 sm:grid-cols-2 md:grid-cols-1">
+      <section className="mt-6 grid items-center justify-center gap-4 sm:grid-cols-2">
         {projects.map((project, i) => {
           return <Project project={project} key={`project-${i}`} />;
         })}
