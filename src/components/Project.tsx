@@ -46,7 +46,7 @@ function Project({ project }: { project: ProjectType }) {
 
 export default function Projects({ projects }: { projects: ProjectType[] }) {
   return (
-    <>
+    <section id="projects">
       <h2 className="mt-8 text-3xl font-semibold">Projects</h2>
       <p className="mt-2">
         All of my projects are available on{" "}
@@ -58,11 +58,11 @@ export default function Projects({ projects }: { projects: ProjectType[] }) {
           my GitHub.
         </a>
       </p>
-      <section className="mt-6 grid items-center justify-center gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid items-center justify-center gap-4 sm:grid-cols-2">
         {projects.map((project, i) => {
           return <Project project={project} key={`project-${i}`} />;
         })}
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

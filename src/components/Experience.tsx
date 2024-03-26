@@ -81,11 +81,11 @@ export default function Experience({
   const [experienceItem, setExperienceItem] = useState(0);
 
   return (
-    <>
+    <section id="experience">
       <h2 className="mt-8 text-3xl font-semibold">Experience</h2>
       <ExperienceTop experience={experiences} currExperience={experienceItem} />
 
-      <section className="mt-8 flex gap-4">
+      <div className="mt-8 flex gap-4">
         <ExperienceBar
           experience={experiences}
           currExperience={experienceItem}
@@ -108,10 +108,10 @@ export default function Experience({
             {experiences[experienceItem].description}
           </p>
         </div>
-      </section>
+      </div>
       <div>
         <Skills skills={skills} />
       </div>
-    </>
+    </section>
   );
 }

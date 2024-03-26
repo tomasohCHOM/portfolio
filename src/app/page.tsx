@@ -12,7 +12,7 @@ import { experiences, projects, skills } from "@/data/selfInfo";
 export default function Home() {
   return (
     <>
-      <Background />
+      {/* <Background /> */}
 
       <Header />
       <main className="mx-auto flex max-w-3xl flex-col justify-center px-8">
