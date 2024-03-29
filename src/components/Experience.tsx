@@ -9,7 +9,7 @@ function ExperienceTop({
   currExperience: number;
 }) {
   return (
-    <div className="flex cursor-pointer items-center justify-center gap-8">
+    <div className="hidden cursor-pointer items-center justify-center gap-8 md:flex">
       {experience.map((exp, i) => {
         return (
           <span
@@ -25,25 +25,40 @@ function ExperienceTop({
 function ExperienceBar({
   experience,
   currExperience,
-  setExperienceItem,
+  setExperienceIndex,
 }: {
   experience: ExperienceType[];
   currExperience: number;
-  setExperienceItem: React.Dispatch<React.SetStateAction<number>>;
+  setExperienceIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="hidden flex-col gap-2 md:flex">
       {experience.map((exp, i) => {
         return (
           <span
             className={`cursor-pointer rounded-lg p-2 text-sm transition ${currExperience === i ? "bg-secondary" : "hover:underline"}`}
             key={`experience-sidebar-${i}`}
-            onClick={() => setExperienceItem(i)}
+            onClick={() => setExperienceIndex(i)}
           >
             {exp.title}
           </span>
         );
       })}
+    </div>
+  );
+}
+
+function ExperienceCard({ experience }: { experience: ExperienceType }) {
+  return (
+    <div className="flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md">
+      <div>
+        <h3 className="text-lg font-semibold">{experience.title}</h3>
+        <p className="text-sm font-medium text-contrast">
+          {experience.location}
+        </p>
+        <p className="text-sm">{experience.timePeriod}</p>
+      </div>
+      <p className="leading-[1.625rem]">{experience.description}</p>
     </div>
   );
 }
@@ -78,35 +93,31 @@ export default function Experience({
   experiences: ExperienceType[];
   skills: string[];
 }) {
-  const [experienceItem, setExperienceItem] = useState(0);
+  const [experienceIndex, setExperienceIndex] = useState(0);
 
   return (
     <section id="experience">
       <h2 className="mt-8 text-3xl font-semibold">Experience</h2>
-      <ExperienceTop experience={experiences} currExperience={experienceItem} />
-
+      <ExperienceTop
+        experience={experiences}
+        currExperience={experienceIndex}
+      />
       <div className="mt-8 flex gap-4">
         <ExperienceBar
           experience={experiences}
-          currExperience={experienceItem}
-          setExperienceItem={setExperienceItem}
+          currExperience={experienceIndex}
+          setExperienceIndex={setExperienceIndex}
         />
-        <div
-          className="flex max-h-max w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
-          key={experiences[experienceItem].title}
-        >
-          <div>
-            <h3 className="text-lg font-semibold">
-              {experiences[experienceItem].title}
-            </h3>
-            <p className="text-sm font-medium">
-              {experiences[experienceItem].location}
-            </p>
-            <p className="text-sm">{experiences[experienceItem].timePeriod}</p>
+        <div className="hidden md:block">
+          <ExperienceCard experience={experiences[experienceIndex]} />
+        </div>
+        <div className="flex w-full items-center justify-center gap-4 sm:gap-12 md:hidden">
+          <div className="h-full border-l-2 border-white" />
+          <div className="flex flex-col gap-4">
+            {experiences.map((experience) => (
+              <ExperienceCard experience={experience} key={experience.title} />
+            ))}
           </div>
-          <p className="leading-[1.625rem]">
-            {experiences[experienceItem].description}
-          </p>
         </div>
       </div>
       <div>
