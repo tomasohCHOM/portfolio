@@ -50,7 +50,7 @@ function ExperienceBar({
 
 function ExperienceCard({ experience }: { experience: ExperienceType }) {
   return (
-    <div className="flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md">
+    <div className="relative flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md">
       <div>
         <h3 className="text-lg font-semibold">{experience.title}</h3>
         <p className="text-sm font-medium text-contrast">
@@ -59,6 +59,8 @@ function ExperienceCard({ experience }: { experience: ExperienceType }) {
         <p className="text-sm">{experience.timePeriod}</p>
       </div>
       <p className="leading-[1.625rem]">{experience.description}</p>
+
+      <div className="absolute left-[-41px] top-[40%] z-10 h-4 w-4 rounded-[50%] bg-white sm:left-[-57px] md:hidden" />
     </div>
   );
 }
@@ -111,7 +113,7 @@ export default function Experience({
         <div className="hidden md:block">
           <ExperienceCard experience={experiences[experienceIndex]} />
         </div>
-        <div className="flex w-full items-center justify-center gap-4 sm:gap-12 md:hidden">
+        <div className="flex w-full items-center justify-center gap-8 sm:gap-12 md:hidden">
           <div className="h-full border-l-2 border-white" />
           <div className="flex flex-col gap-4">
             {experiences.map((experience) => (
