@@ -1,3 +1,5 @@
+import { motionVariant, projectVariant } from "@/app/motions";
+import { motion } from "framer-motion";
 import { ProjectType } from "@/data/types";
 import Image from "next/image";
 import React from "react";
@@ -12,7 +14,13 @@ function Tag({ text }: { text: string }) {
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className="flex h-full max-w-[20rem] flex-col items-center gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:max-w-full md:flex-col md:p-4">
+    <motion.div
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+      variants={projectVariant}
+      className="flex h-full max-w-[20rem] flex-col items-center gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:max-w-full md:flex-col md:p-4"
+    >
       <a
         className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg"
         target="_blank"
@@ -40,13 +48,19 @@ function Project({ project }: { project: ProjectType }) {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function Projects({ projects }: { projects: ProjectType[] }) {
   return (
-    <section id="projects">
+    <motion.section
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+      variants={motionVariant}
+      id="projects"
+    >
       <h2 className="mt-8 text-3xl font-semibold">Projects</h2>
       <p className="mt-2">
         All of my projects are available on{" "}
@@ -63,6 +77,6 @@ export default function Projects({ projects }: { projects: ProjectType[] }) {
           return <Project project={project} key={`project-${i}`} />;
         })}
       </div>
-    </section>
+    </motion.section>
   );
 }

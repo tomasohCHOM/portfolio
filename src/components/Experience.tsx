@@ -1,3 +1,5 @@
+import { motionVariant } from "@/app/motions";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import type { ExperienceType } from "@/data/types";
 
@@ -98,7 +100,13 @@ export default function Experience({
   const [experienceIndex, setExperienceIndex] = useState(0);
 
   return (
-    <section id="experience">
+    <motion.section
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+      variants={motionVariant}
+      id="experience"
+    >
       <h2 className="mt-8 text-3xl font-semibold">Experience</h2>
       <ExperienceTop
         experience={experiences}
@@ -122,9 +130,14 @@ export default function Experience({
           </div>
         </div>
       </div>
-      <div>
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
+        variants={motionVariant}
+      >
         <Skills skills={skills} />
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

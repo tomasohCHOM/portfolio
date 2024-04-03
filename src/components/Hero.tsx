@@ -1,9 +1,18 @@
+import { motionVariant } from "@/app/motions";
+import { motion } from "framer-motion";
 import React from "react";
 import { FaDiscord, FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    <section id="about" className="flex max-w-[45ch] flex-col gap-4">
+    <motion.section
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+      variants={motionVariant}
+      id="about"
+      className="flex max-w-[45ch] flex-col gap-4"
+    >
       <h1 className="place-self-start text-5xl font-bold">
         Tomas <span className="text-contrast">Oh</span>
       </h1>
@@ -37,6 +46,6 @@ export default function Hero() {
           <FaPaperPlane size={24} />
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 }

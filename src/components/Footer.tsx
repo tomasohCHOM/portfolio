@@ -2,10 +2,14 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="mt-8 flex items-center justify-center gap-8 px-4 pb-16 pt-10">
-      <div className="font-semibold">@ 2024 - Present</div>
-      <div>
-        Developed with 🔥 by <span className="font-semibold">Tomas Oh</span>
+    <footer className="mt-8 flex items-center justify-around gap-8 px-4 pb-16 pt-10 sm:justify-center">
+      <div className="text-[0.75rem] font-semibold sm:text-sm">
+        @ 2024 - Present
+      </div>
+      <div className="text-right text-[0.75rem] sm:text-sm">
+        Developed with 🔥 by
+        <br className="sm:hidden" />{" "}
+        <span className="font-semibold">Tomas Oh</span>
       </div>
     </footer>
   );
