@@ -1,6 +1,6 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { ExperienceType } from "@/data/types";
 
 function ExperienceTop({
@@ -51,17 +51,19 @@ function ExperienceBar({
 }
 
 function ExperienceCard({
+  isMobile,
   experience,
   experienceIndex,
 }: {
+  isMobile: boolean;
   experience: ExperienceType;
   experienceIndex: number;
 }) {
   return (
     <motion.div
       key={experienceIndex}
-      initial="offscreen"
-      whileInView="onscreen"
+      initial={isMobile ? "hidden" : "horizontalHidden"}
+      whileInView={isMobile ? "visible" : "horizontalVisible"}
       viewport={{ once: true }}
       variants={motionVariant}
       className="relative flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
@@ -117,8 +119,8 @@ export default function Experience({
 
   return (
     <motion.section
-      initial="offscreen"
-      whileInView="onscreen"
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
       variants={motionVariant}
       id="experience"
@@ -136,6 +138,7 @@ export default function Experience({
         />
         <div className="hidden md:block">
           <ExperienceCard
+            isMobile={false}
             experienceIndex={experienceIndex}
             experience={experiences[experienceIndex]}
           />
@@ -145,6 +148,7 @@ export default function Experience({
           <div className="flex flex-col gap-4">
             {experiences.map((experience) => (
               <ExperienceCard
+                isMobile={true}
                 experienceIndex={experienceIndex}
                 experience={experience}
                 key={experience.title}
@@ -154,8 +158,8 @@ export default function Experience({
         </div>
       </div>
       <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
         variants={motionVariant}
       >

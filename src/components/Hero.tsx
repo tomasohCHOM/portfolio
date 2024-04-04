@@ -6,8 +6,8 @@ import { FaDiscord, FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 export default function Hero() {
   return (
     <motion.section
-      initial="offscreen"
-      whileInView="onscreen"
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
       variants={motionVariant}
       id="about"

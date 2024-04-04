@@ -49,8 +49,8 @@ function Project({ project }: { project: ProjectType }) {
 export default function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <motion.section
-      initial="offscreen"
-      whileInView="onscreen"
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
       variants={motionVariant}
       id="projects"
