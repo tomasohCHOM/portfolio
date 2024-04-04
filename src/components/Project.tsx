@@ -1,4 +1,4 @@
-import { motionVariant, projectVariant } from "@/app/motions";
+import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
 import { ProjectType } from "@/data/types";
 import Image from "next/image";
@@ -14,13 +14,7 @@ function Tag({ text }: { text: string }) {
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true }}
-      variants={projectVariant}
-      className="flex h-full max-w-[20rem] flex-col items-center gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:max-w-full md:flex-col md:p-4"
-    >
+    <div className="flex h-full max-w-[20rem] flex-col items-center gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:max-w-full md:flex-col md:p-4">
       <a
         className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg"
         target="_blank"
@@ -48,7 +42,7 @@ function Project({ project }: { project: ProjectType }) {
           })}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

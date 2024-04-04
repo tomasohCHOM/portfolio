@@ -50,9 +50,22 @@ function ExperienceBar({
   );
 }
 
-function ExperienceCard({ experience }: { experience: ExperienceType }) {
+function ExperienceCard({
+  experience,
+  experienceIndex,
+}: {
+  experience: ExperienceType;
+  experienceIndex: number;
+}) {
   return (
-    <div className="relative flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md">
+    <motion.div
+      key={experienceIndex}
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+      variants={motionVariant}
+      className="relative flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
+    >
       <div>
         <h3 className="text-lg font-semibold">{experience.title}</h3>
         <p className="text-sm font-medium text-contrast">
@@ -62,8 +75,11 @@ function ExperienceCard({ experience }: { experience: ExperienceType }) {
       </div>
       <p className="leading-[1.625rem]">{experience.description}</p>
 
-      <div className="absolute left-[-41px] top-[40%] z-10 h-4 w-4 rounded-[50%] bg-white sm:left-[-57px] md:hidden" />
-    </div>
+      <motion.div
+        inherit={false}
+        className="absolute left-[-41px] top-[40%] z-10 h-4 w-4 rounded-[50%] bg-white sm:left-[-57px] md:hidden"
+      />
+    </motion.div>
   );
 }
 
@@ -119,13 +135,20 @@ export default function Experience({
           setExperienceIndex={setExperienceIndex}
         />
         <div className="hidden md:block">
-          <ExperienceCard experience={experiences[experienceIndex]} />
+          <ExperienceCard
+            experienceIndex={experienceIndex}
+            experience={experiences[experienceIndex]}
+          />
         </div>
         <div className="flex w-full items-center justify-center gap-8 sm:gap-12 md:hidden">
           <div className="h-full border-l-2 border-white" />
           <div className="flex flex-col gap-4">
             {experiences.map((experience) => (
-              <ExperienceCard experience={experience} key={experience.title} />
+              <ExperienceCard
+                experienceIndex={experienceIndex}
+                experience={experience}
+                key={experience.title}
+              />
             ))}
           </div>
         </div>
