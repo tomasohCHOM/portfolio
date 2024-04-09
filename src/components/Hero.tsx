@@ -39,9 +39,6 @@ export default function Hero() {
         <a target="_blank" href="https://github.com/tomasohCHOM">
           <FaLinkedin size={24} />
         </a>
-        <a target="_blank" href="https://github.com/tomasohCHOM">
-          <FaDiscord size={24} />
-        </a>
         <a target="_blank" href="mailto:tomasoh@csu.fullerton.edu">
           <FaPaperPlane size={24} />
         </a>

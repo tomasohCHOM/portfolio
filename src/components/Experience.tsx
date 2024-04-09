@@ -1,7 +1,8 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import type { ExperienceType } from "@/data/types";
+import React, { useState } from "react";
+import type { ExperienceType } from "@/info/types";
+import Image from "next/image";
 
 function ExperienceTop({
   experience,
@@ -93,12 +94,15 @@ function Skills({ skills }: { skills: string[] }) {
         {skills.map((skill) => {
           return (
             <span
-              className="flex h-12 rounded-lg bg-secondary p-3 shadow-sm sm:h-16"
+              className="group flex h-12 rounded-lg bg-secondary p-3 shadow-sm sm:h-16"
               key={skill}
             >
-              <img
+              <Image
                 src={`/assets/skills/${skill.split(".").join("").toLowerCase()}.png`}
-                className="w-6 items-center justify-center object-contain saturate-100 transition-all duration-[250ms] hover:saturate-100 sm:w-10 sm:saturate-0"
+                alt={`${skill} icon`}
+                width={100}
+                height={100}
+                className="w-6 items-center justify-center object-contain saturate-100 transition-all duration-[250ms] group-hover:saturate-100 sm:w-10 sm:saturate-0"
               />
             </span>
           );

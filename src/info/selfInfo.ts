@@ -72,5 +72,5 @@ export const skills = [
   "TailwindCSS",
   "Sass",
   "Deno",
-  "Prisma",
+  "VIM",
 ];

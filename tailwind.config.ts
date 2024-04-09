@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: "rgb(var(--color-primary))",
+        "secondary-300": "rgb(var(--color-secondary-300))",
         secondary: "rgb(var(--color-secondary))",
         contrast_muted: "rgb(var(--color-contrast-muted))",
         contrast: "rgb(var(--color-contrast))",

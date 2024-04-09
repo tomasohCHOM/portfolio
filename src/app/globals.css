@@ -7,6 +7,7 @@
 :root {
   font-family: "Montserrat", sans-serif;
   --color-primary: 247, 249, 251;
+  --color-secondary-300: 245, 247, 249;
   --color-secondary: 242, 244, 247;
   --color-text: 56, 56, 56;
   --color-contrast-muted: 221, 240, 238;
@@ -19,6 +20,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-primary: 26, 33, 37;
+    --color-secondary-300: 35, 41, 43;
     --color-secondary: 45, 50, 55;
     --color-text: 248, 242, 246;
     --color-contrast-muted: 57, 80, 78;
@@ -41,6 +43,7 @@ html {
 
 [data-theme="dark"] {
   --color-primary: 26, 33, 37;
+  --color-secondary-300: 35, 41, 43;
   --color-secondary: 45, 50, 55;
   --color-text: 248, 242, 246;
   --color-contrast-muted: 57, 80, 78;
