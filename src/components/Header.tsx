@@ -1,6 +1,8 @@
 import { useTheme } from "next-themes";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { FaAlignRight } from "react-icons/fa";
+import { motionVariant } from "@/app/motions";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +14,13 @@ export default function Header() {
   };
 
   return (
-    <header className="relative flex items-center justify-between px-8 py-8 md:py-4">
+    <motion.header
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={motionVariant}
+      className="relative flex items-center justify-between px-8 py-8 md:py-4"
+    >
       <span className="italic">Tomas Oh</span>
       <button
         onBlur={() => setIsOpen(!theme)}
@@ -35,6 +43,6 @@ export default function Header() {
           Disable Background Animation
         </button>
       </div>
-    </header>
+    </motion.header>
   );
 }

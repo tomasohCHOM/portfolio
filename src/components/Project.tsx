@@ -14,7 +14,7 @@ function Tag({ text }: { text: string }) {
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className="flex h-full max-w-[20rem] flex-col items-center gap-4 rounded-xl bg-secondary p-6 text-sm font-medium shadow-md md:max-w-full md:flex-col md:p-4">
+    <div className="flex h-full max-w-[20rem] flex-col items-center gap-4 justify-self-center rounded-xl bg-secondary p-6 text-sm font-medium shadow-md sm:max-w-full sm:flex-row sm:justify-self-stretch md:p-4">
       <a
         className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg"
         target="_blank"
@@ -34,9 +34,13 @@ function Project({ project }: { project: ProjectType }) {
         /> */}
       </a>
       <div className="flex flex-col gap-2">
-        <h3 className="text-center text-lg font-semibold">{project.name}</h3>
-        <p className="max-w-[35ch] text-center">{project.description}</p>
-        <div className="flex flex-wrap items-center justify-center gap-1">
+        <h3 className="text-center text-lg font-semibold sm:text-start">
+          {project.name}
+        </h3>
+        <p className="max-w-full text-center sm:text-start">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-1 sm:justify-normal">
           {project.tags.map((tag) => {
             return <Tag text={tag} key={`project-tag-${tag}`} />;
           })}
@@ -49,8 +53,8 @@ function Project({ project }: { project: ProjectType }) {
 export default function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <motion.section
-      initial="hidden"
-      whileInView="visible"
+      initial="verticalHidden"
+      whileInView="verticalVisible"
       viewport={{ once: true }}
       variants={motionVariant}
       id="projects"
@@ -66,7 +70,7 @@ export default function Projects({ projects }: { projects: ProjectType[] }) {
           my GitHub.
         </a>
       </p>
-      <div className="mt-6 grid items-center justify-center gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid grid-cols-1 items-center justify-center gap-4">
         {projects.map((project, i) => {
           return <Project project={project} key={`project-${i}`} />;
         })}

@@ -49,20 +49,6 @@ export const projects: ProjectType[] = [
     demoLink: "https://quizzardgame.vercel.app/",
   },
   {
-    name: "Devdle",
-    description: "Wordle clone with SWE terms",
-    tags: ["SvelteKit", "TypeScript", "Sass", "SWE", "Web development"],
-    githubLink: "https://github.com/tomasohCHOM/Devdle",
-    demoLink: "https://devdlegame.vercel.app/",
-  },
-  {
-    name: "MatriXpert",
-    description: "A Matrix calculator website",
-    tags: ["React.js", "React Router", "Sass", "Linear Algebra"],
-    githubLink: "https://github.com/tomasohCHOM/MatriXpert",
-    demoLink: "https://matrixpert.netlify.app/",
-  },
-  {
     name: "char-roles-bot",
     description: "Assign/remove roles from a Smash Bros Discord server",
     tags: ["Deno", "TypeScript", "Discord REST API", "Smash Bros"],

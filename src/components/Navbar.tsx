@@ -1,5 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { motionVariant } from "@/app/motions";
 
 const headerItems = [
   { title: "About", href: "about" },
@@ -10,7 +12,13 @@ const headerItems = [
 
 export default function Navbar() {
   return (
-    <nav className="mx-auto flex items-center justify-center gap-2 border-b-[1px] border-slate-300 p-2 text-[0.75rem] md:gap-3 md:text-[1rem]">
+    <motion.nav
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={motionVariant}
+      className="mx-auto flex items-center justify-center gap-2 border-b-[1px] border-slate-300 p-2 text-[0.75rem] md:gap-3 md:text-[1rem]"
+    >
       {headerItems.map((item, i) => (
         <Link
           to={item.href}
@@ -25,6 +33,6 @@ export default function Navbar() {
           {item.title}
         </Link>
       ))}
-    </nav>
+    </motion.nav>
   );
 }

@@ -62,8 +62,8 @@ function ExperienceCard({
   return (
     <motion.div
       key={experienceIndex}
-      initial={isMobile ? "hidden" : "horizontalHidden"}
-      whileInView={isMobile ? "visible" : "horizontalVisible"}
+      initial={isMobile ? "verticalHidden" : "horizontalHidden"}
+      whileInView={isMobile ? "verticalVisible" : "horizontalVisible"}
       viewport={{ once: true }}
       variants={motionVariant}
       className="relative flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
@@ -93,12 +93,12 @@ function Skills({ skills }: { skills: string[] }) {
         {skills.map((skill) => {
           return (
             <span
-              className="flex h-16 rounded-lg bg-secondary p-3 shadow-sm"
+              className="flex h-12 rounded-lg bg-secondary p-3 shadow-sm sm:h-16"
               key={skill}
             >
               <img
                 src={`/assets/skills/${skill.split(".").join("").toLowerCase()}.png`}
-                className="w-10 items-center justify-center object-contain"
+                className="w-6 items-center justify-center object-contain saturate-100 transition-all duration-[250ms] hover:saturate-100 sm:w-10 sm:saturate-0"
               />
             </span>
           );
@@ -119,8 +119,8 @@ export default function Experience({
 
   return (
     <motion.section
-      initial="hidden"
-      whileInView="visible"
+      initial="verticalHidden"
+      whileInView="verticalVisible"
       viewport={{ once: true }}
       variants={motionVariant}
       id="experience"
@@ -158,8 +158,8 @@ export default function Experience({
         </div>
       </div>
       <motion.div
-        initial="hidden"
-        whileInView="visible"
+        initial="verticalHidden"
+        whileInView="verticalVisible"
         viewport={{ once: true }}
         variants={motionVariant}
       >
