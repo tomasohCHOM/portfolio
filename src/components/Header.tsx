@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 import { FaAlignRight } from "react-icons/fa";
 import { motionVariant } from "@/app/motions";
 
-export default function Header() {
+export default function Header({
+  backgroundInabled,
+  setBackgroundInabled,
+}: {
+  backgroundInabled: boolean;
+  setBackgroundInabled: any;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -39,8 +45,11 @@ export default function Header() {
         >
           Switch Themes
         </button>
-        <button className="w-full p-2 text-start transition hover:backdrop-brightness-105">
-          Disable Background Animation
+        <button
+          onClick={() => setBackgroundInabled(!backgroundInabled)}
+          className="w-full p-2 text-start transition hover:backdrop-brightness-105"
+        >
+          {backgroundInabled ? "Disable" : "Enable"} Background Animation
         </button>
       </div>
     </motion.header>

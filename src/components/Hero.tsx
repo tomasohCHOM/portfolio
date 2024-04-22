@@ -1,7 +1,7 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
 import React from "react";
-import { FaDiscord, FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 
 export default function Hero() {
   return (

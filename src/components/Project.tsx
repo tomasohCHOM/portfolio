@@ -14,12 +14,12 @@ function Tag({ text }: { text: string }) {
 
 function Project({ project }: { project: ProjectType }) {
   return (
-    <div className="bg-secondary-300 flex h-full max-w-[20rem] flex-col items-center gap-4 justify-self-center rounded-xl p-6 text-sm font-medium shadow-md transition hover:bg-secondary sm:max-w-full sm:flex-row sm:justify-self-stretch md:p-4">
-      <a
-        className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg"
-        target="_blank"
-        href={project.demoLink ?? project.githubLink}
-      >
+    <a
+      target="_blank"
+      href={project.demoLink ?? project.githubLink}
+      className="flex h-full max-w-[20rem] cursor-pointer flex-col items-center gap-4 justify-self-center rounded-xl bg-secondary-300 p-6 text-sm font-medium shadow-md transition hover:bg-secondary sm:max-w-full sm:flex-row sm:justify-self-stretch md:p-4"
+    >
+      <span className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg">
         <Image
           src={`/assets/projects/${project.name.toLowerCase()}.png`}
           alt={`${project.name} project image`}
@@ -27,7 +27,7 @@ function Project({ project }: { project: ProjectType }) {
           height={700}
           className="object-contain object-center drop-shadow-md"
         />
-      </a>
+      </span>
       <div className="flex flex-col gap-2">
         <h3 className="text-center text-lg font-semibold sm:text-start">
           {project.name}
@@ -41,7 +41,7 @@ function Project({ project }: { project: ProjectType }) {
           })}
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
