@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { motionVariant } from "@/app/motions";
 import Image from "next/image";
 
-const pics = ["iguazu"];
+const pics = ["iguazu", "me", "dtdisney", "drawing"];
 
 export default function Extra() {
   return (
@@ -14,11 +14,35 @@ export default function Extra() {
       variants={motionVariant}
       id="extra"
     >
-      <h2 className="mt-8 text-3xl font-semibold">Extra</h2>
-      <div className="relative mt-6 flex items-center justify-center">
-        {[...pics, ...pics, ...pics, ...pics].map((pic, i) => {
-          const zIndex = `z-${40 - (i + 1) * 10}`;
-          const rotation = i % 2 === 0 ? "rotate-[6deg]" : "";
+      <h2 className="mt-8 text-3xl font-semibold">Pics :)</h2>
+      <div className="group relative mx-auto mt-6 flex max-w-max items-center justify-center overflow-x-visible saturate-0 transition hover:saturate-100">
+        {pics.map((pic, i) => {
+          let zIndex: string, rotation: string, translateFactor: string;
+          switch (i) {
+            case 0:
+              zIndex = "z-30";
+              rotation = "rotate-[0deg]";
+              translateFactor =
+                "group-hover:translate-x-10 group-hover:-translate-y-4";
+              break;
+            case 1:
+              zIndex = "z-10";
+              rotation = "rotate-[-4deg]";
+              translateFactor =
+                "group-hover:-translate-x-20 group-hover:-translate-y-2";
+              break;
+            case 2:
+              zIndex = "z-40";
+              rotation = "rotate-[5deg]";
+              translateFactor =
+                "group-hover:translate-x-28 group-hover:translate-y-8";
+              break;
+            default:
+              zIndex = "z-20";
+              rotation = "rotate-[7deg]";
+              translateFactor =
+                "group-hover:-translate-x-12 group-hover:translate-y-24";
+          }
           const pos = i === 0 ? "" : "absolute";
           return (
             <Image
@@ -27,7 +51,7 @@ export default function Extra() {
               alt={`${pic} picture`}
               width={500}
               height={500}
-              className={`${zIndex} ${pos} ${rotation} max-w-52 rounded-lg blur-[2px] drop-shadow-sm transition hover:blur-none`}
+              className={`${zIndex} ${pos} ${rotation} ${translateFactor} max-w-52 rounded-lg border-4 border-white drop-shadow-sm transition`}
             />
           );
         })}
