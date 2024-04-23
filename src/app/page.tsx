@@ -8,7 +8,6 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Project";
 import { experiences, projects, skills } from "@/info/selfInfo";
-import { useState } from "react";
 
 export default function Home() {
   return (
