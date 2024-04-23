@@ -11,15 +11,10 @@ import { experiences, projects, skills } from "@/info/selfInfo";
 import { useState } from "react";
 
 export default function Home() {
-  const [backgroundInabled, setBackgroundInabled] = useState(true);
-
   return (
     <>
-      {backgroundInabled && <Background />}
-      <Header
-        backgroundInabled={backgroundInabled}
-        setBackgroundInabled={setBackgroundInabled}
-      />
+      <Background />
+      <Header />
       <main className="mx-auto flex max-w-3xl flex-col justify-center px-8">
         <Navbar />
         <div className="mt-8">

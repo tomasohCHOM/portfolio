@@ -1,6 +1,7 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
 import { ProjectType } from "@/info/types";
+import { MdArrowOutward } from "react-icons/md";
 import Image from "next/image";
 import React from "react";
 
@@ -17,8 +18,12 @@ function Project({ project }: { project: ProjectType }) {
     <a
       target="_blank"
       href={project.demoLink ?? project.githubLink}
-      className="flex h-full max-w-[20rem] cursor-pointer flex-col items-center gap-4 justify-self-center rounded-xl bg-secondary-300 p-6 text-sm font-medium shadow-md transition hover:bg-secondary sm:max-w-full sm:flex-row sm:justify-self-stretch md:p-4"
+      className="group relative flex h-full max-w-[20rem] cursor-pointer flex-col items-center gap-4 justify-self-center rounded-xl bg-secondary-300 p-6 text-sm font-medium shadow-md transition hover:bg-secondary sm:max-w-full sm:flex-row sm:justify-self-stretch md:p-4"
     >
+      <MdArrowOutward
+        size={16}
+        className="absolute right-5 top-5 transition-all group-hover:right-4 group-hover:top-4"
+      />
       <span className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg">
         <Image
           src={`/assets/projects/${project.name.toLowerCase()}.png`}
