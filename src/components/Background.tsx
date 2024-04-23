@@ -13,7 +13,7 @@ export default function Starfield(props: Props) {
     speedFactor = 0.03,
     backgroundColor = "black",
     starColor = [34, 193, 153],
-    starCount = 5000,
+    starCount = 3000,
   } = props;
 
   useEffect(() => {
@@ -69,12 +69,12 @@ export default function Starfield(props: Props) {
             brightness +
             ")";
           c.fillStyle = rgb;
-          c.fillRect(x, y, 1, 1);
+          c.fillRect(x, y, 1.4, 1.4);
         };
 
         const moveStars = (distance: number) => {
           const count = stars.length;
-          for (var i = 0; i < count; i++) {
+          for (let i = 0; i < count; i++) {
             const s = stars[i];
             s.z -= distance;
             while (s.z <= 1) {
@@ -101,7 +101,7 @@ export default function Starfield(props: Props) {
           const cy = h / 2;
 
           const count = stars.length;
-          for (var i = 0; i < count; i++) {
+          for (let i = 0; i < count; i++) {
             const star = stars[i];
 
             const x = cx + star.x / (star.z * 0.001);

@@ -2,6 +2,7 @@
 
 import Background from "@/components/Background";
 import Experience from "@/components/Experience";
+import Extra from "@/components/Extra";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -20,6 +21,7 @@ export default function Home() {
           <Hero />
           <Experience experiences={experiences} skills={skills} />
           <Projects projects={projects} />
+          <Extra />
         </div>
       </main>
       <Footer />
