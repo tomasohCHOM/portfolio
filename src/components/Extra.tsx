@@ -51,7 +51,8 @@ export default function Extra() {
               alt={`${pic} picture`}
               width={500}
               height={500}
-              className={`${zIndex} ${pos} ${rotation} ${translateFactor} max-w-52 rounded-lg border-4 border-white drop-shadow-sm transition`}
+              priority={true}
+              className={`${zIndex} ${pos} ${rotation} ${translateFactor} max-w-52 rounded-lg border-4 border-white bg-gray-400 drop-shadow-sm transition`}
             />
           );
         })}
