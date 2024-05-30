@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { motionVariant } from "@/app/motions";
 import Image from "next/image";
 
-const pics = ["iguazu", "me", "dtdisney", "drawing"];
+const pics = ["iguazu", "me", "acm", "dtdisney", "drawing"];
 
 export default function Extra() {
   return (
@@ -32,6 +32,12 @@ export default function Extra() {
                 "group-hover:-translate-x-20 group-hover:-translate-y-2";
               break;
             case 2:
+              zIndex = "z-50";
+              rotation = "rotate-[0deg]";
+              translateFactor =
+                "group-hover:translate-x-32 group-hover:-translate-y-16 group-hover:rotate-[5deg]";
+              break;
+            case 3:
               zIndex = "z-40";
               rotation = "rotate-[5deg]";
               translateFactor =

@@ -41,7 +41,7 @@ function ExperienceBar({
           <span
             className={`cursor-pointer rounded-lg p-2 text-sm transition ${currExperience === i ? "bg-secondary" : "hover:underline"}`}
             key={`experience-sidebar-${i}`}
-            onClick={() => setExperienceIndex(i)}
+            onMouseDown={() => setExperienceIndex(i)}
           >
             {exp.title}
           </span>
