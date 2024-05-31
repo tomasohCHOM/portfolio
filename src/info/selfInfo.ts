@@ -5,7 +5,7 @@ export const experiences: ExperienceType[] = [
     title: "Supplemental Instruction",
     location: "California State University, Fullerton",
     timePeriod: "Jan 2024 - Present",
-    description: `Hosted biweekly workshop seessions, integrating interactive and collaborative 
+    description: `Hosted biweekly workshop sessions, integrating interactive and collaborative 
        study techniques. Enhanced student learning of Multivariable Calculus concepts through 
        peer discussion and participation, resulting in a 10% average grade increase`,
   },
