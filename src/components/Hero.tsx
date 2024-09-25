@@ -1,7 +1,13 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
 import React from "react";
-import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaNewspaper,
+  FaPaperPlane,
+} from "react-icons/fa";
+import { IoNewspaperOutline } from "react-icons/io5";
 
 export default function Hero() {
   return (
@@ -36,11 +42,17 @@ export default function Hero() {
         <a target="_blank" href="https://github.com/tomasohCHOM">
           <FaGithub size={24} />
         </a>
-        <a target="_blank" href="https://github.com/tomasohCHOM">
+        <a target="_blank" href="https://www.linkedin.com/in/tomaasoh/">
           <FaLinkedin size={24} />
         </a>
         <a target="_blank" href="mailto:tomasoh@csu.fullerton.edu">
           <FaPaperPlane size={24} />
+        </a>
+        <a
+          target="_blank"
+          href="https://github.com/tomasohCHOM/resume/blob/main/resume.pdf"
+        >
+          <IoNewspaperOutline size={24} />
         </a>
       </div>
     </motion.section>
