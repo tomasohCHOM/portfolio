@@ -2,7 +2,7 @@ export interface ExperienceType {
   title: string;
   location: string;
   timePeriod: string;
-  description: string;
+  description: string[];
 }
 
 export type ProjectType = {

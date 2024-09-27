@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { motionVariant } from "@/app/motions";
 import Image from "next/image";
 
-const pics = ["iguazu", "me", "acm", "dtdisney", "drawing"];
+const pics = ["iguazu.png", "me.png", "oss.jpg", "dtdisney.png", "drawing.png"];
 
 export default function Extra() {
   return (
@@ -53,7 +53,7 @@ export default function Extra() {
           return (
             <Image
               key={`${pic}-${i}`}
-              src={`/assets/pics/${pic}.png`}
+              src={`/assets/pics/${pic}`}
               alt={`${pic} picture`}
               width={500}
               height={500}

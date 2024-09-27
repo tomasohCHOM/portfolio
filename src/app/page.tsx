@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Project";
-import { experiences, projects, skills } from "@/info/selfInfo";
+import { experiences, projects, skills } from "@/info/info";
 
 export default function Home() {
   return (

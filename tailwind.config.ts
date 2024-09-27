@@ -18,5 +18,8 @@ const config: Config = {
     },
   },
   plugins: [],
+  corePlugins: {
+    listStyleType: true,
+  },
 };
 export default config;

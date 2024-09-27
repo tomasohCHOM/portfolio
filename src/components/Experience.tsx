@@ -39,7 +39,7 @@ function ExperienceBar({
       {experience.map((exp, i) => {
         return (
           <span
-            className={`cursor-pointer rounded-lg p-2 text-sm transition ${currExperience === i ? "bg-secondary" : "hover:underline"}`}
+            className={`cursor-pointer overflow-y-hidden whitespace-nowrap rounded-lg p-2 text-sm transition ${currExperience === i ? "bg-secondary" : "hover:underline"}`}
             key={`experience-sidebar-${i}`}
             onMouseDown={() => setExperienceIndex(i)}
           >
@@ -76,7 +76,13 @@ function ExperienceCard({
         </p>
         <p className="text-sm">{experience.timePeriod}</p>
       </div>
-      <p className="leading-[1.625rem]">{experience.description}</p>
+      <ul className="list-disc px-3 leading-[1.625rem]">
+        {experience.description.map((item, i) => (
+          <li key={experience.title + " item" + i} className="text-sm">
+            {item}
+          </li>
+        ))}
+      </ul>
 
       <motion.div
         inherit={false}

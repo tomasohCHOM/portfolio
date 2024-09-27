@@ -1,12 +1,7 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
 import React from "react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaNewspaper,
-  FaPaperPlane,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
 
 export default function Hero() {
