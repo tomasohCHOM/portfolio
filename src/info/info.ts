@@ -45,7 +45,8 @@ export const projects: ProjectType[] = [
     name: "vimaroo",
     description: "Website to practice Vim keybindings/motions",
     tags: ["SvelteKit", "TypeScript", "TailwindCSS", "Supabase", "Vim"],
-    githubLink: "https://github.com/acmcsufoss/vimaroo",
+    githubLink: "https://github.com/tomasohCHOM/vimaroo",
+    demoLink: "https://vimaroo.vercel.app",
   },
   {
     name: "char-roles-bot",
@@ -57,8 +58,7 @@ export const projects: ProjectType[] = [
     name: "github-stats",
     description: "CLI tool that retrieves GitHub user statistics",
     tags: ["Go", "GitHubAPI"],
-    githubLink: "https://github.com/tomasohCHOM/QuizZard",
-    demoLink: "https://quizzardgame.vercel.app/",
+    githubLink: "https://github.com/tomasohCHOM/github-stats",
   },
 ];
 
