@@ -1,8 +1,10 @@
 export interface ExperienceType {
   title: string;
-  location: string;
+  company: string;
   timePeriod: string;
-  description: string[];
+  description: string;
+  tags: string[];
+  imgSrc: string;
 }
 
 export type ProjectType = {

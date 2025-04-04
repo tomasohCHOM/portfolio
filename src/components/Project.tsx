@@ -4,14 +4,7 @@ import { ProjectType } from "@/info/types";
 import { MdArrowOutward } from "react-icons/md";
 import Image from "next/image";
 import React from "react";
-
-function Tag({ text }: { text: string }) {
-  return (
-    <span className="rounded-xl bg-contrast_muted px-2 text-[12px] font-semibold text-contrast">
-      {text}
-    </span>
-  );
-}
+import { Tag } from "./Tag";
 
 function Project({ project }: { project: ProjectType }) {
   return (

@@ -1,93 +1,47 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
 import type { ExperienceType } from "@/info/types";
 import Image from "next/image";
-
-function ExperienceTop({
-  experience,
-  currExperience,
-}: {
-  experience: ExperienceType[];
-  currExperience: number;
-}) {
-  return (
-    <div className="hidden cursor-pointer items-center justify-center gap-8 md:flex">
-      {experience.map((exp, i) => {
-        return (
-          <span
-            className={`h-4 w-4 rounded-[50%] border-2 border-contrast transition ${currExperience === i ? "bg-contrast" : ""}`}
-            key={`experience-sidebar-${exp.title}`}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
-function ExperienceBar({
-  experience,
-  currExperience,
-  setExperienceIndex,
-}: {
-  experience: ExperienceType[];
-  currExperience: number;
-  setExperienceIndex: React.Dispatch<React.SetStateAction<number>>;
-}) {
-  return (
-    <div className="hidden flex-col gap-2 md:flex">
-      {experience.map((exp, i) => {
-        return (
-          <span
-            className={`cursor-pointer overflow-y-hidden whitespace-nowrap rounded-lg p-2 text-sm transition ${currExperience === i ? "bg-secondary" : "hover:underline"}`}
-            key={`experience-sidebar-${i}`}
-            onMouseDown={() => setExperienceIndex(i)}
-          >
-            {exp.title}
-          </span>
-        );
-      })}
-    </div>
-  );
-}
+import React from "react";
+import { Tag } from "./Tag";
 
 function ExperienceCard({
   isMobile,
   experience,
-  experienceIndex,
 }: {
   isMobile: boolean;
   experience: ExperienceType;
-  experienceIndex: number;
 }) {
   return (
     <motion.div
-      key={experienceIndex}
       initial={isMobile ? "verticalHidden" : "horizontalHidden"}
       whileInView={isMobile ? "verticalVisible" : "horizontalVisible"}
       viewport={{ once: true }}
       variants={motionVariant}
-      className="relative flex max-h-max max-w-[25rem] flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
+      className="relative flex max-h-max flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
     >
+      <div className="absolute -right-4 -top-2 flex aspect-square w-12 items-center justify-center rounded-full bg-secondary">
+        <Image
+          src={experience.imgSrc}
+          alt={experience.company + " experience"}
+          width={42}
+          height={42}
+          className="w-[85%] rounded-full"
+        />
+      </div>
       <div>
         <h3 className="text-lg font-semibold">{experience.title}</h3>
         <p className="text-sm font-medium text-contrast">
-          {experience.location}
+          {experience.company}
         </p>
         <p className="text-sm">{experience.timePeriod}</p>
       </div>
-      <ul className="list-disc px-3 leading-[1.625rem]">
-        {experience.description.map((item, i) => (
-          <li key={experience.title + " item" + i} className="text-sm">
-            {item}
-          </li>
-        ))}
-      </ul>
-
-      <motion.div
-        inherit={false}
-        className="absolute left-[-41px] top-[40%] z-10 h-4 w-4 rounded-[50%] bg-white sm:left-[-57px] md:hidden"
-      />
+      <p>{experience.description}</p>
+      <div className="flex flex-wrap items-center gap-1 sm:justify-normal">
+        {experience.tags.map((tag) => {
+          return <Tag text={tag} key={`project-tag-${tag}`} />;
+        })}
+      </div>
     </motion.div>
   );
 }
@@ -125,8 +79,6 @@ export default function Experience({
   experiences: ExperienceType[];
   skills: string[];
 }) {
-  const [experienceIndex, setExperienceIndex] = useState(0);
-
   return (
     <motion.section
       initial="verticalHidden"
@@ -136,30 +88,13 @@ export default function Experience({
       id="experience"
     >
       <h2 className="mt-8 text-3xl font-semibold">Experience</h2>
-      <ExperienceTop
-        experience={experiences}
-        currExperience={experienceIndex}
-      />
       <div className="mt-8 flex gap-4">
-        <ExperienceBar
-          experience={experiences}
-          currExperience={experienceIndex}
-          setExperienceIndex={setExperienceIndex}
-        />
-        <div className="hidden md:block">
-          <ExperienceCard
-            isMobile={false}
-            experienceIndex={experienceIndex}
-            experience={experiences[experienceIndex]}
-          />
-        </div>
-        <div className="flex w-full items-center justify-center gap-8 sm:gap-12 md:hidden">
+        <div className="flex w-full items-center justify-center gap-8 sm:gap-12">
           <div className="h-full border-l-2 border-white" />
           <div className="flex flex-col gap-4">
-            {experiences.map((experience) => (
+            {experiences.map((experience, i) => (
               <ExperienceCard
                 isMobile={true}
-                experienceIndex={experienceIndex}
                 experience={experience}
                 key={experience.title}
               />
