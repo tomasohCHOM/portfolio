@@ -1,5 +1,5 @@
 import { motionVariant } from "@/app/motions";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import type { ExperienceType } from "@/info/types";
 import Image from "next/image";
 import React from "react";

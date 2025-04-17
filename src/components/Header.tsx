@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { motionVariant } from "@/app/motions";
 import Link from "next/link";
 

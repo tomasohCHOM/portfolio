@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { motionVariant } from "@/app/motions";
 import Image from "next/image";
 

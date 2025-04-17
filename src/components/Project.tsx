@@ -1,5 +1,5 @@
 import { motionVariant } from "@/app/motions";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ProjectType } from "@/info/types";
 import { MdArrowOutward } from "react-icons/md";
 import Image from "next/image";
