@@ -1,6 +1,5 @@
 "use client";
 
-import Background from "@/components/Background";
 import Experience from "@/components/Experience";
 import Extra from "@/components/Extra";
 import Footer from "@/components/Footer";
@@ -13,7 +12,6 @@ import { experiences, projects, skills } from "@/info/info";
 export default function Home() {
   return (
     <>
-      <Background />
       <Header />
       <main className="mx-auto flex max-w-3xl flex-col justify-center px-8">
         <Navbar />
