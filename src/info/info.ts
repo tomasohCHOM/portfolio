@@ -2,10 +2,10 @@ import { ExperienceType, ProjectType } from "./types";
 
 export const experiences: ExperienceType[] = [
   {
-    title: "SDE Intern",
+    title: "Software Development Engineering Intern",
     company: "Amazon Web Services",
     timePeriod: "May 2025 - Aug 2025",
-    description: "Incoming Software Development Engineering Intern at AWS :)",
+    description: "Developed a core AWS Marketplace Catalog API feature using Java, Lambda, CDK, S3, and Step Functions to streamline vendor-partner reselling agreements.",
     tags: [
       "Software Engineering",
       "Internship",
@@ -17,9 +17,9 @@ export const experiences: ExperienceType[] = [
   {
     title: "Open Source Software Team Lead",
     company: "Association for Computing Machinery at CSUF",
-    timePeriod: "Aug 2024 - Present",
+    timePeriod: "Aug 2024 - May 2025",
     description:
-      "Lead maintainer of acmcsufoss, managing 40+ repositories and engaging 100+ contributors. Organized weekly workshops with open-source maintainers.",
+      "Led the acmcsufoss organization, managing 40+ repositories and engaging 100+ contributors. Organized weekly workshops with open-source maintainers.",
     tags: [
       "Open Source",
       "Software Engineering",
@@ -30,16 +30,16 @@ export const experiences: ExperienceType[] = [
     imgSrc: "/assets/experience/oss.svg",
   },
   {
-    title: "Supplemental Instructor",
+    title: "Supplemental Instruction Leader",
     company: "California State University, Fullerton",
     timePeriod: "Jan 2024 - Present",
     description:
-      "Conducts weekly sessions reinforcing multivariable and vector calculus concepts through problem-solving and group discussions.",
+      "Conducted weekly sessions reinforcing multivariable and vector calculus concepts through problem-solving and group discussions.",
     tags: ["Tutoring", "Math", "Calculus III", "Problem Solving", "Education"],
     imgSrc: "/assets/experience/si-logo.jpeg",
   },
   {
-    title: "Data Science/AI Research Assistant",
+    title: "Data Science/AI Research Intern",
     company: "Project ACCESS at CSUF",
     timePeriod: "June 2024 - Aug 2024",
     description:
@@ -60,12 +60,12 @@ export const projects: ProjectType[] = [
     name: "Fullyhacks",
     description: "Website for the largest hackathon at CSUF (2025)",
     tags: ["Next.js", "TypeScript", "TailwindCSS", "Prisma", "MongoDB"],
-    githubLink: "https://github.com/tomasohCHOM/fourJSFrameworksOneApp",
-    demoLink: "https://fullyhacks.acmcsuf.com/",
+    githubLink: "https://github.com/tomasohCHOM/fullyhacks",
+    demoLink: "https://fullyhacks-git-main-tomasohchoms-projects.vercel.app",
   },
   {
     name: "vimaroo",
-    description: "Website to practice Vim keybindings/motions",
+    description: "A Monkeytype-like web app to practice Vim keybindings/motions",
     tags: ["SvelteKit", "TypeScript", "TailwindCSS", "Supabase", "Vim"],
     githubLink: "https://github.com/tomasohCHOM/vimaroo",
     demoLink: "https://vimaroo.vercel.app",
