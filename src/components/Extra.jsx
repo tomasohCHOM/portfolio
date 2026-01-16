@@ -1,7 +1,5 @@
-import React from "react";
 import { motion } from "motion/react";
 import { motionVariant } from "@/app/motions";
-import Image from "next/image";
 
 const pics = ["iguazu.png", "me.png", "oss.jpg", "dtdisney.png", "drawing.png"];
 
@@ -17,7 +15,7 @@ export default function Extra() {
       <h2 className="mt-8 text-3xl font-semibold">Pics :)</h2>
       <div className="group relative mx-auto mt-6 flex max-w-max items-center justify-center overflow-x-visible saturate-0 transition hover:saturate-100">
         {pics.map((pic, i) => {
-          let zIndex: string, rotation: string, translateFactor: string;
+          let zIndex, rotation, translateFactor;
           switch (i) {
             case 0:
               zIndex = "z-30";
@@ -51,13 +49,12 @@ export default function Extra() {
           }
           const pos = i === 0 ? "" : "absolute";
           return (
-            <Image
+            <img
               key={`${pic}-${i}`}
               src={`/assets/pics/${pic}`}
               alt={`${pic} picture`}
               width={500}
               height={500}
-              priority={true}
               className={`${zIndex} ${pos} ${rotation} ${translateFactor} max-w-52 rounded-lg border-4 border-white bg-gray-400 drop-shadow-sm transition`}
             />
           );

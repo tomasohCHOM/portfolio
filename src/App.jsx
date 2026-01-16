@@ -1,5 +1,3 @@
-"use client";
-
 import Experience from "@/components/Experience";
 import Extra from "@/components/Extra";
 import Footer from "@/components/Footer";
@@ -9,7 +7,7 @@ import Navbar from "@/components/Navbar";
 import Projects from "@/components/Project";
 import { experiences, projects, skills } from "@/info/info";
 
-export default function Home() {
+export default function App() {
   return (
     <>
       <Header />

@@ -1,12 +1,9 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "motion/react";
-import { ProjectType } from "@/info/types";
 import { MdArrowOutward } from "react-icons/md";
-import Image from "next/image";
-import React from "react";
 import { Tag } from "./Tag";
 
-function Project({ project }: { project: ProjectType }) {
+function Project({ project }) {
   return (
     <a
       target="_blank"
@@ -17,8 +14,8 @@ function Project({ project }: { project: ProjectType }) {
         size={16}
         className="absolute right-5 top-5 transition-all group-hover:right-4 group-hover:top-4"
       />
-      <span className="relative aspect-[1.57142857] w-32 flex-shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg">
-        <Image
+      <span className="relative aspect-[1.57142857] w-32 shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg">
+        <img
           src={`/assets/projects/${project.name.toLowerCase()}.png`}
           alt={`${project.name} project image`}
           width={1100}
@@ -43,7 +40,7 @@ function Project({ project }: { project: ProjectType }) {
   );
 }
 
-export default function Projects({ projects }: { projects: ProjectType[] }) {
+export default function Projects({ projects }) {
   return (
     <motion.section
       initial="verticalHidden"

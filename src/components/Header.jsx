@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { motionVariant } from "@/app/motions";
-import Link from "next/link";
 
 export default function Header() {
   return (
@@ -11,9 +10,9 @@ export default function Header() {
       variants={motionVariant}
       className="relative flex items-center justify-between px-8 py-8 md:py-4"
     >
-      <Link href="/" className="italic">
+      <a href="/" className="italic">
         Tomas Oh
-      </Link>
+      </a>
     </motion.header>
   );
 }

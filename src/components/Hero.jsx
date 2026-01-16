@@ -1,6 +1,5 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "motion/react";
-import React from "react";
 import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 import { IoNewspaperOutline } from "react-icons/io5";
 

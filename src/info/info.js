@@ -1,6 +1,4 @@
-import { ExperienceType, ProjectType } from "./types";
-
-export const experiences: ExperienceType[] = [
+export const experiences = [
   {
     title: "Software Development Engineering Intern",
     company: "Amazon Web Services",
@@ -55,7 +53,7 @@ export const experiences: ExperienceType[] = [
   },
 ];
 
-export const projects: ProjectType[] = [
+export const projects = [
   {
     name: "Fullyhacks",
     description: "Website for the largest hackathon at CSUF (2025)",

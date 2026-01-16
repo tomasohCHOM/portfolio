@@ -1,17 +1,8 @@
 import { motionVariant } from "@/app/motions";
 import { motion } from "motion/react";
-import type { ExperienceType } from "@/info/types";
-import Image from "next/image";
-import React from "react";
 import { Tag } from "./Tag";
 
-function ExperienceCard({
-  isMobile,
-  experience,
-}: {
-  isMobile: boolean;
-  experience: ExperienceType;
-}) {
+function ExperienceCard({ isMobile, experience }) {
   return (
     <motion.div
       initial={isMobile ? "verticalHidden" : "horizontalHidden"}
@@ -21,7 +12,7 @@ function ExperienceCard({
       className="relative flex max-h-max flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
     >
       <div className="absolute -right-4 -top-2 flex aspect-square w-12 items-center justify-center rounded-full bg-secondary">
-        <Image
+        <img
           src={experience.imgSrc}
           alt={experience.company + " experience"}
           width={42}
@@ -46,7 +37,7 @@ function ExperienceCard({
   );
 }
 
-function Skills({ skills }: { skills: string[] }) {
+function Skills({ skills }) {
   return (
     <>
       <h2 className="mt-8 text-3xl font-semibold">Skills</h2>
@@ -57,12 +48,12 @@ function Skills({ skills }: { skills: string[] }) {
               className="group flex h-12 rounded-lg bg-secondary p-3 shadow-sm sm:h-16"
               key={skill}
             >
-              <Image
+              <img
                 src={`/assets/skills/${skill.split(".").join("").toLowerCase()}.png`}
                 alt={`${skill} icon`}
                 width={100}
                 height={100}
-                className="w-6 items-center justify-center object-contain saturate-100 transition-all duration-[250ms] group-hover:saturate-100 sm:w-10 sm:saturate-0"
+                className="w-6 items-center justify-center object-contain saturate-100 transition-all duration-250 group-hover:saturate-100 sm:w-10 sm:saturate-0"
               />
             </span>
           );
@@ -72,13 +63,7 @@ function Skills({ skills }: { skills: string[] }) {
   );
 }
 
-export default function Experience({
-  experiences,
-  skills,
-}: {
-  experiences: ExperienceType[];
-  skills: string[];
-}) {
+export default function Experience({ experiences, skills }) {
   return (
     <motion.section
       initial="verticalHidden"
@@ -92,7 +77,7 @@ export default function Experience({
         <div className="flex w-full items-center justify-center gap-8 sm:gap-12">
           <div className="h-full border-l-2 border-white" />
           <div className="flex flex-col gap-4">
-            {experiences.map((experience, i) => (
+            {experiences.map((experience) => (
               <ExperienceCard
                 isMobile={true}
                 experience={experience}

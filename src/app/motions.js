@@ -1,6 +1,4 @@
-import { Variants } from "motion/react";
-
-export const motionVariant: Variants = {
+export const motionVariant = {
   hidden: {
     opacity: 0.13,
   },
