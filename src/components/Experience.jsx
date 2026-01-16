@@ -1,4 +1,4 @@
-import { motionVariant } from "@/app/motions";
+import { motionVariant } from "@/motions";
 import { motion } from "motion/react";
 import { Tag } from "./Tag";
 

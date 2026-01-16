@@ -1,5 +1,5 @@
-import { motionVariant } from "@/app/motions";
 import { motion } from "motion/react";
+import { motionVariant } from "@/motions";
 import { MdArrowOutward } from "react-icons/md";
 import { Tag } from "./Tag";
 

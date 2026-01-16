@@ -1,7 +1,7 @@
-import { motionVariant } from "@/app/motions";
 import { motion } from "motion/react";
+import { motionVariant } from "@/motions";
 import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
-import { IoNewspaperOutline } from "react-icons/io5";
+import { IoIosPaper } from "react-icons/io";
 
 export default function Hero() {
   return (
@@ -46,7 +46,7 @@ export default function Hero() {
           target="_blank"
           href="https://github.com/tomasohCHOM/resume/blob/main/resume.pdf"
         >
-          <IoNewspaperOutline size={24} />
+          <IoIosPaper size={24} />
         </a>
       </div>
     </motion.section>

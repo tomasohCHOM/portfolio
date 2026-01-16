@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/app/motions";
+import { motionVariant } from "@/motions";
 
 export default function Footer() {
   return (
