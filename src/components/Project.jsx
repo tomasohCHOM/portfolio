@@ -16,7 +16,7 @@ function Project({ project }) {
       />
       <span className="relative aspect-[1.57142857] w-32 shrink-0 cursor-pointer overflow-hidden rounded-xl sm:rounded-lg">
         <img
-          src={`/assets/projects/${project.name.toLowerCase()}.png`}
+          src={`/assets/projects/${project.name.toLowerCase()}.webp`}
           alt={`${project.name} project image`}
           width={1100}
           height={700}

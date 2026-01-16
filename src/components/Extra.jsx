@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { motionVariant } from "@/motions";
 
-const pics = ["iguazu.png", "me.png", "oss.jpg", "dtdisney.png", "drawing.png"];
+const pics = ["iguazu", "me", "oss", "dtdisney", "drawing"];
 
 export default function Extra() {
   return (
@@ -51,7 +51,7 @@ export default function Extra() {
           return (
             <img
               key={`${pic}-${i}`}
-              src={`/assets/pics/${pic}`}
+              src={`/assets/pics/${pic}.webp`}
               alt={`${pic} picture`}
               width={500}
               height={500}

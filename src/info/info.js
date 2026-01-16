@@ -3,7 +3,8 @@ export const experiences = [
     title: "Software Development Engineering Intern",
     company: "Amazon Web Services",
     timePeriod: "May 2025 - Aug 2025",
-    description: "Developed a core AWS Marketplace Catalog API feature using Java, Lambda, CDK, S3, and Step Functions to streamline vendor-partner reselling agreements.",
+    description:
+      "Developed a core AWS Marketplace Catalog API feature using Java, Lambda, CDK, S3, and Step Functions to streamline vendor-partner reselling agreements.",
     tags: [
       "Software Engineering",
       "Internship",
@@ -34,7 +35,7 @@ export const experiences = [
     description:
       "Conducted weekly sessions reinforcing multivariable and vector calculus concepts through problem-solving and group discussions.",
     tags: ["Tutoring", "Math", "Calculus III", "Problem Solving", "Education"],
-    imgSrc: "/assets/experience/si-logo.jpeg",
+    imgSrc: "/assets/experience/si-logo.png",
   },
   {
     title: "Data Science/AI Research Intern",
@@ -49,7 +50,7 @@ export const experiences = [
       "Team Collaboration",
       "Research",
     ],
-    imgSrc: "/assets/experience/csuf.png",
+    imgSrc: "/assets/experience/csuf.svg",
   },
 ];
 
@@ -63,7 +64,8 @@ export const projects = [
   },
   {
     name: "vimaroo",
-    description: "A Monkeytype-like web app to practice Vim keybindings/motions",
+    description:
+      "A Monkeytype-like web app to practice Vim keybindings/motions",
     tags: ["SvelteKit", "TypeScript", "TailwindCSS", "Supabase", "Vim"],
     githubLink: "https://github.com/tomasohCHOM/vimaroo",
     demoLink: "https://vimaroo.vercel.app",
@@ -87,16 +89,17 @@ export const skills = [
   "Python",
   "TypeScript",
   "JavaScript",
-  "GO",
+  "Go",
   "HTML",
   "CSS",
   "Java",
+  "Postgres",
   "ReactJS",
-  "Next.js",
   "Svelte",
   "Node.js",
-  "TailwindCSS",
-  "Sass",
   "Deno",
+  "TailwindCSS",
+  "AWS",
+  "Git",
   "Vim",
 ];
