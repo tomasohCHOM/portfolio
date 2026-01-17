@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { motionVariant } from "@/motions";
+import { YEAR } from "@/year";
 
 export default function Footer() {
   return (
@@ -11,7 +12,7 @@ export default function Footer() {
       className="mt-8 flex items-center justify-around gap-8 px-4 pb-16 pt-10 sm:justify-center"
     >
       <div className="text-[0.75rem] font-semibold sm:text-sm">
-        @ 2024 - Present
+        @ {YEAR} - Present
       </div>
       <div className="text-right text-[0.75rem] sm:text-sm">
         Developed with 🔥 by
