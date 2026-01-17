@@ -7,20 +7,26 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
-import App from "./App.jsx";
-import "./globals.css";
+import PortfolioV0 from "@/pages/v0";
+import PortfolioV1 from "@/pages/v1";
 
 const rootRoute = createRootRoute({
   component: () => <Outlet />,
 });
 
-const indexRoute = createRoute({
+const v1 = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: App,
+  component: PortfolioV1,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute]);
+const v0 = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/v0",
+  component: PortfolioV0,
+});
+
+const routeTree = rootRoute.addChildren([v1, v0]);
 
 const router = createRouter({
   routeTree,
