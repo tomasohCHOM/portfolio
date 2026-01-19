@@ -6,11 +6,13 @@ import Projects from "@/components/v0/Project";
 import Extra from "@/components/v0/Extra";
 import Footer from "@/components/v0/Footer";
 import { experiences, projects, skills } from "@/info";
+import { useTheme } from "@/theme";
 import "@/styles.css";
 
 export default function PortfolioV0() {
+  useTheme("v0");
   return (
-    <div className="v0">
+    <div>
       <Header />
       <main className="mx-auto flex max-w-3xl flex-col justify-center px-8">
         <Navbar />

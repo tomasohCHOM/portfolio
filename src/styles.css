@@ -5,6 +5,7 @@
   font-family: "Cascadia Code", sans-serif;
   --color-primary: 252, 252, 252;
   --color-secondary: 228, 233, 240;
+  --color-text-blur: 115, 116, 117;
   --color-text: 39, 40, 41;
 
   background-color: rgb(var(--color-primary));
@@ -14,6 +15,7 @@
     --color-primary: rgb(var(--color-primary));
     --color-secondary: rgb(var(--color-secondary));
     --color-text: rgb(var(--color-text));
+    --color-text-blur: rgb(var(--color-text-blur));
   }
 }
 
