@@ -19,6 +19,39 @@ function useWindowSize() {
   return windowSize;
 }
 
+function drawAscii(ctx, width) {
+  if (width < 1380) return;
+
+  let idx = 0;
+  ctx.font = "2px monospace";
+  ctx.fillStyle = "rgb(150, 150, 150)";
+  ctx.textBaseline = "top";
+  ctx.imageSmoothingEnabled = false;
+  const lines = sephiroth.split("\n");
+  const lineHeight = 2;
+
+  const dots = String(".").repeat(lines[0].length);
+  for (let i = 0; i < lines.length; i++) {
+    ctx.fillText(dots, 700, 70 + i * lineHeight);
+    ctx.fillText(dots, 700, 70 + i * lineHeight);
+  }
+
+  const updateText = () => {
+    if (idx >= lines.length) {
+      clearInterval(intervalId);
+      return;
+    }
+    ctx.fillStyle = "rgb(252, 252, 252)";
+    ctx.fillText(dots, 700, 70 + idx * lineHeight);
+    ctx.fillStyle = "rgb(150, 150, 150)";
+    ctx.fillText(lines[idx], 700, 70 + idx * lineHeight);
+    ctx.fillText(lines[idx], 700, 70 + idx * lineHeight);
+    idx++;
+  };
+
+  const intervalId = setInterval(updateText, 10);
+}
+
 export function AsciiArt() {
   const canvasRef = useRef(null);
   const { width, height } = useWindowSize();
@@ -38,17 +71,7 @@ export function AsciiArt() {
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    ctx.clearRect(0, 0, width, height);
-    ctx.font = "2px monospace";
-    ctx.fillStyle = "rgb(20, 20, 20)";
-    ctx.textBaseline = "top";
-    ctx.imageSmoothingEnabled = false;
-
-    const lines = sephiroth.split("\n");
-    const lineHeight = 2;
-    for (let i = 0; i < lines.length; i++) {
-      ctx.fillText(lines[i], 700, 70 + i * lineHeight);
-    }
+    drawAscii(ctx, width);
   }, [width, height]);
 
   return (
