@@ -16,14 +16,14 @@ export default function Hero() {
       <h1 className="text-4xl font-bold">Tomas Oh</h1>
       <div className="flex flex-col gap-6 text-sm">
         <p>
-          I'm a software engineer based from Southern California, graduated from
+          I'm a software engineer based in Southern California, graduated from
           California State University, Fullerton with a B.S. in Computer Science
           and a minor in Mathematics.
         </p>
         <p>
-          I find joy in learning new technologies whenever I can, building
-          things from scratch for the sake of learning, and contributing to open
-          source. You can find all the things I'm building on my{" "}
+          I enjoy learning new technologies whenever I can, building things from
+          scratch for the sake of learning, and contributing to open source. You
+          can find many of the projects I'm working on over on my{" "}
           <a
             target="_blank"
             href="https://github.com/tomasohCHOM/"
@@ -34,10 +34,11 @@ export default function Hero() {
           </a>
           !
         </p>
-        <p>Hobbies: rock climbing, playing soccer, smash bros, drawing.</p>
         <p>
-          Thank you for taking a look at my portfolio! Enjoy some ASCII art :D
+          Favorite Hobbies: rock climbing, playing soccer, Smash Bros, and
+          drawing.
         </p>
+        <p>Thank you for stopping by! Enjoy some ASCII art :D</p>
       </div>
       <div className="flex gap-3">
         <a target="_blank" href="https://github.com/tomasohCHOM">
