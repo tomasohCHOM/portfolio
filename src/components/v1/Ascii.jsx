@@ -1,5 +1,5 @@
-import { PQ } from "./pq";
-import drawing from "/assets/drawings/sephiroth.txt?raw";
+import { prim } from "@/lib/prim";
+import drawing from "/ascii/sephiroth.txt?raw";
 import { useEffect, useRef, useState } from "react";
 
 function useWindowSize() {
@@ -43,40 +43,6 @@ function createWeightedMatrix(drawingLines) {
   return weights;
 }
 
-function prim(weights, start = [33, 159]) {
-  const M = weights.length;
-  const N = weights[0].length;
-
-  const seen = Array.from({ length: M }, () => Array(N).fill(false));
-  const result = [];
-
-  const pq = new PQ((a, b) => a.weight < b.weight);
-  const [sr, sc] = start;
-  pq.push({ r: sr, c: sc, weight: 0 });
-
-  while (!pq.isEmpty()) {
-    const { r, c, weight } = pq.pop();
-    if (seen[r][c]) continue;
-
-    seen[r][c] = true;
-    result.push({ r, c, weight });
-    for (const [dr, dc] of [
-      [-1, 0],
-      [1, 0],
-      [0, -1],
-      [0, 1],
-    ]) {
-      const nr = r + dr;
-      const nc = c + dc;
-      if (nr < 0 || nr >= M || nc < 0 || nc >= N || seen[nr][nc]) continue;
-
-      const edgeWeight = weights[nr][nc];
-      pq.push({ r: nr, c: nc, weight: edgeWeight });
-    }
-  }
-  return result;
-}
-
 function drawAscii(ctx, width) {
   // TODO: Play with different screen sizes
   const initialX = width >= 1380 ? 800 : 50;
@@ -118,7 +84,7 @@ function drawAscii(ctx, width) {
   };
 }
 
-export function AsciiArt() {
+export default function AsciiArt() {
   const canvasRef = useRef(null);
   const { width, height } = useWindowSize();
 

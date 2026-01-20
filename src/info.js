@@ -11,7 +11,7 @@ export const experiences = [
       "Cloud Computing",
       "Distributed Systems",
     ],
-    imgSrc: "/assets/experience/aws.svg",
+    imgSrc: "/experience/aws.svg",
   },
   {
     title: "Open Source Software Team Lead",
@@ -26,7 +26,7 @@ export const experiences = [
       "Full Stack",
       "Community",
     ],
-    imgSrc: "/assets/experience/oss.svg",
+    imgSrc: "/experience/oss.svg",
   },
   {
     title: "Supplemental Instruction Leader",
@@ -35,7 +35,7 @@ export const experiences = [
     description:
       "Conducted weekly sessions reinforcing multivariable and vector calculus concepts through problem-solving and group discussions.",
     tags: ["Tutoring", "Math", "Calculus III", "Problem Solving", "Education"],
-    imgSrc: "/assets/experience/si-logo.png",
+    imgSrc: "/experience/si-logo.png",
   },
   {
     title: "Data Science/AI Research Intern",
@@ -50,7 +50,7 @@ export const experiences = [
       "Team Collaboration",
       "Research",
     ],
-    imgSrc: "/assets/experience/csuf.svg",
+    imgSrc: "/experience/csuf.svg",
   },
 ];
 

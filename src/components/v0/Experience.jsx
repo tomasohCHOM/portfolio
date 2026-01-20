@@ -49,7 +49,7 @@ function Skills({ skills }) {
               key={skill}
             >
               <img
-                src={`/assets/skills/${skill.split(".").join("").toLowerCase()}.png`}
+                src={`/skills/${skill.split(".").join("").toLowerCase()}.png`}
                 alt={`${skill} icon`}
                 width={100}
                 height={100}

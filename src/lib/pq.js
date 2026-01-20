@@ -8,15 +8,19 @@ export class PQ {
     this._heap = [];
     this._comparator = comparator;
   }
+
   size() {
     return this._heap.length;
   }
+
   isEmpty() {
     return this.size() == 0;
   }
+
   peek() {
     return this._heap[0];
   }
+
   push(...values) {
     values.forEach((value) => {
       this._heap.push(value);
@@ -24,6 +28,7 @@ export class PQ {
     });
     return this.size();
   }
+
   pop() {
     const poppedValue = this.peek();
     const bottom = this.size() - 1;
@@ -34,18 +39,22 @@ export class PQ {
     this._siftDown();
     return poppedValue;
   }
+
   replace(value) {
     const replacedValue = this.peek();
     this._heap[top] = value;
     this._siftDown();
     return replacedValue;
   }
+
   _greater(i, j) {
     return this._comparator(this._heap[i], this._heap[j]);
   }
+
   _swap(i, j) {
     [this._heap[i], this._heap[j]] = [this._heap[j], this._heap[i]];
   }
+
   _siftUp() {
     let node = this.size() - 1;
     while (node > top && this._greater(node, parent(node))) {
@@ -53,6 +62,7 @@ export class PQ {
       node = parent(node);
     }
   }
+
   _siftDown() {
     let node = top;
     while (

@@ -1,4 +1,4 @@
-import { AsciiArt } from "@/components/v1/Ascii";
+import AsciiArt from "@/components/v1/Ascii";
 import Header from "@/components/Header";
 import Hero from "@/components/v1/Hero";
 import { useTheme } from "@/theme";

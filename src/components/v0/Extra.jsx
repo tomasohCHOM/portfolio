@@ -51,7 +51,7 @@ export default function Extra() {
           return (
             <img
               key={`${pic}-${i}`}
-              src={`/assets/pics/${pic}.webp`}
+              src={`/pics/${pic}.webp`}
               alt={`${pic} picture`}
               width={500}
               height={500}
