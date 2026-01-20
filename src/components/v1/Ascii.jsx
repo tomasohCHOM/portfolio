@@ -1,5 +1,5 @@
 import { PQ } from "./pq";
-import drawing from "/assets/drawings/hello.txt?raw";
+import drawing from "/assets/drawings/sephiroth.txt?raw";
 import { useEffect, useRef, useState } from "react";
 
 function useWindowSize() {
@@ -83,11 +83,10 @@ function drawAscii(ctx, width) {
   const initialY = width >= 800 ? 70 : 400;
 
   const drawingLines = drawing.replace(/\n$/, "").split("\n");
-  console.log(drawingLines[drawingLines.length - 1]);
   const weights = createWeightedMatrix(drawingLines);
 
   ctx.fillStyle = "rgb(40, 42, 47)";
-  ctx.font = "2.1px monospace";
+  ctx.font = "3px monospace";
   ctx.textBaseline = "top";
   const lineHeight = 2;
 
@@ -144,6 +143,9 @@ export function AsciiArt() {
   }, [width, height]);
 
   return (
-    <canvas ref={canvasRef} className="fixed -z-10 block top-0 left-0"></canvas>
+    <canvas
+      ref={canvasRef}
+      className="fixed -z-10 block top-0 left-2/12"
+    ></canvas>
   );
 }
