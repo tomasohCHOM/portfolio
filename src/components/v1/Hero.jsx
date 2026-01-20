@@ -1,16 +1,14 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/motions";
 import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 
 export default function Hero() {
   return (
     <motion.section
-      initial="hidden"
-      whileInView="visible"
-      animate={{ animationDelay: 1000 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      variants={motionVariant}
+      transition={{ delay: 1 }}
       className="flex flex-col gap-8"
     >
       <h1 className="text-4xl font-bold">Tomas Oh</h1>
