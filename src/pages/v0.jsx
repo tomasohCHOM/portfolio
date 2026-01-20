@@ -5,7 +5,6 @@ import Experience from "@/components/v0/Experience";
 import Projects from "@/components/v0/Project";
 import Extra from "@/components/v0/Extra";
 import Footer from "@/components/v0/Footer";
-import { experiences, projects, skills } from "@/info";
 import { useTheme } from "@/theme";
 import "@/styles.css";
 
@@ -18,8 +17,8 @@ export default function PortfolioV0() {
         <Navbar />
         <div className="mt-8">
           <Hero />
-          <Experience experiences={experiences} skills={skills} />
-          <Projects projects={projects} />
+          <Experience />
+          <Projects />
           <Extra />
         </div>
       </main>

@@ -1,3 +1,6 @@
+import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
+import { IoIosPaper } from "react-icons/io";
+
 export const experiences = [
   {
     title: "Software Development Engineering Intern",
@@ -102,4 +105,27 @@ export const skills = [
   "AWS",
   "Git",
   "Vim",
+];
+
+export const links = (iconSize) => [
+  {
+    name: "github",
+    href: "https://github.com/tomasohCHOM",
+    icon: <FaGithub size={iconSize} />,
+  },
+  {
+    name: "linkedin",
+    href: "https://www.linkedin.com/in/tomaasoh",
+    icon: <FaLinkedin size={iconSize} />,
+  },
+  {
+    name: "email",
+    href: "mailto:tomas021104@gmail.com",
+    icon: <FaPaperPlane size={iconSize} />,
+  },
+  {
+    name: "resume",
+    href: "https://github.com/tomasohCHOM/resume/blob/main/resume.pdf",
+    icon: <IoIosPaper size={iconSize} />,
+  },
 ];

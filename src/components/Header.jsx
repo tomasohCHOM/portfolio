@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/motions";
+import { containerVariantsV1 } from "@/motions";
 import { Link } from "@tanstack/react-router";
 
 const links = [
@@ -13,7 +13,7 @@ export default function Header() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      variants={motionVariant}
+      variants={containerVariantsV1}
       className="relative flex items-center justify-between px-8 py-8 md:py-4"
     >
       <Link to="/">Tomas Oh</Link>

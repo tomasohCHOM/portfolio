@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/motions";
+import { containerVariantsV0 } from "@/motions";
 
 const headerItems = [
   { title: "About", href: "about" },
@@ -14,7 +14,7 @@ export default function Navbar() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      variants={motionVariant}
+      variants={containerVariantsV0}
       className="mx-auto flex items-center justify-center gap-2 border-b border-slate-300 p-2 text-[0.75rem] md:gap-3 md:text-[1rem]"
     >
       {headerItems.map((item, i) => (

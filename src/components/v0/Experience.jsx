@@ -1,6 +1,7 @@
-import { motionVariant } from "@/motions";
 import { motion } from "motion/react";
-import { Tag } from "./Tag";
+import { Tag } from "@/components/v0/Tag";
+import { experiences, skills } from "@/info";
+import { containerVariantsV0 } from "@/motions";
 
 function ExperienceCard({ isMobile, experience }) {
   return (
@@ -8,7 +9,7 @@ function ExperienceCard({ isMobile, experience }) {
       initial={isMobile ? "verticalHidden" : "horizontalHidden"}
       whileInView={isMobile ? "verticalVisible" : "horizontalVisible"}
       viewport={{ once: true }}
-      variants={motionVariant}
+      variants={containerVariantsV0}
       className="relative flex max-h-max flex-col gap-4 rounded-lg bg-secondary p-4 shadow-md"
     >
       <div className="absolute -right-4 -top-2 flex aspect-square w-12 items-center justify-center rounded-full bg-secondary">
@@ -37,7 +38,7 @@ function ExperienceCard({ isMobile, experience }) {
   );
 }
 
-function Skills({ skills }) {
+function Skills() {
   return (
     <>
       <h2 className="mt-8 text-3xl font-semibold">Skills</h2>
@@ -53,7 +54,7 @@ function Skills({ skills }) {
                 alt={`${skill} icon`}
                 width={100}
                 height={100}
-                className="w-6 items-center justify-center object-contain saturate-100 transition-all duration-250 group-hover:saturate-100 sm:w-10 sm:saturate-0"
+                className="w-6 items-center justify-center object-contain saturate-100 transition-all duration-250 sm:w-10 sm:saturate-0 group-hover:saturate-100"
               />
             </span>
           );
@@ -63,14 +64,14 @@ function Skills({ skills }) {
   );
 }
 
-export default function Experience({ experiences, skills }) {
+export default function Experience() {
   return (
     <motion.section
+      id="experience"
       initial="verticalHidden"
       whileInView="verticalVisible"
       viewport={{ once: true }}
-      variants={motionVariant}
-      id="experience"
+      variants={containerVariantsV0}
     >
       <h2 className="mt-8 text-3xl font-semibold">Experience</h2>
       <div className="mt-8 flex gap-4">
@@ -91,9 +92,9 @@ export default function Experience({ experiences, skills }) {
         initial="verticalHidden"
         whileInView="verticalVisible"
         viewport={{ once: true }}
-        variants={motionVariant}
+        variants={containerVariantsV0}
       >
-        <Skills skills={skills} />
+        <Skills />
       </motion.div>
     </motion.section>
   );

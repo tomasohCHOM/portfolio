@@ -1,16 +1,41 @@
-export const motionVariant = {
+export const containerVariantsV1 = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 1,
+      duration: 1,
+      delayChildren: 1.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+export const childVariantsV1 = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "tween",
+      ease: "easeOut",
+      duration: 0.4,
+    },
+  },
+};
+
+export const containerVariantsV0 = {
   hidden: {
     opacity: 0,
   },
-  visible: (custom) => ({
+  visible: {
     opacity: 1,
     transition: {
       type: "spring",
       bounce: 0.2,
       duration: 1,
-      delay: custom?.delay ?? 0,
     },
-  }),
+  },
   verticalHidden: {
     y: 100,
     opacity: 0,

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/motions";
+import { containerVariantsV0 } from "@/motions";
 import { YEAR } from "@/year";
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      variants={motionVariant}
+      variants={containerVariantsV0}
       className="mt-8 flex items-center justify-around gap-8 px-4 pb-16 pt-10 sm:justify-center"
     >
       <div className="text-[0.75rem] font-semibold sm:text-sm">

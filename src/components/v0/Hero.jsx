@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/motions";
-import { FaGithub, FaLinkedin, FaPaperPlane } from "react-icons/fa";
-import { IoIosPaper } from "react-icons/io";
+import { containerVariantsV0 } from "@/motions";
+import { links } from "@/info";
 
 export default function Hero() {
   return (
@@ -9,7 +8,7 @@ export default function Hero() {
       initial="verticalHidden"
       whileInView="verticalVisible"
       viewport={{ once: true }}
-      variants={motionVariant}
+      variants={containerVariantsV0}
       id="about"
       className="flex max-w-[45ch] flex-col gap-4"
     >
@@ -33,21 +32,11 @@ export default function Hero() {
       </p>
 
       <div className="flex gap-3">
-        <a target="_blank" href="https://github.com/tomasohCHOM">
-          <FaGithub size={24} />
-        </a>
-        <a target="_blank" href="https://www.linkedin.com/in/tomaasoh/">
-          <FaLinkedin size={24} />
-        </a>
-        <a target="_blank" href="mailto:tomasoh@csu.fullerton.edu">
-          <FaPaperPlane size={24} />
-        </a>
-        <a
-          target="_blank"
-          href="https://github.com/tomasohCHOM/resume/blob/main/resume.pdf"
-        >
-          <IoIosPaper size={24} />
-        </a>
+        {links(24).map((link) => (
+          <a key={link.name} href={link.href} target="_blank">
+            {link.icon}
+          </a>
+        ))}
       </div>
     </motion.section>
   );

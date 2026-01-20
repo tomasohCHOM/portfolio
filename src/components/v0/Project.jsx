@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/motions";
+import { containerVariantsV0 } from "@/motions";
 import { MdArrowOutward } from "react-icons/md";
-import { Tag } from "./Tag";
+import { Tag } from "@/components/v0/Tag";
+import { projects } from "@/info";
 
 function Project({ project }) {
   return (
@@ -40,13 +41,13 @@ function Project({ project }) {
   );
 }
 
-export default function Projects({ projects }) {
+export default function Projects() {
   return (
     <motion.section
       initial="verticalHidden"
       whileInView="verticalVisible"
       viewport={{ once: true }}
-      variants={motionVariant}
+      variants={containerVariantsV0}
       id="projects"
     >
       <h2 className="mt-8 text-3xl font-semibold">Projects</h2>

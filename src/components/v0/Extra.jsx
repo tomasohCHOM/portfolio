@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { motionVariant } from "@/motions";
+import { containerVariantsV0 } from "@/motions";
 
 const pics = ["iguazu", "me", "oss", "dtdisney", "drawing"];
 
@@ -9,7 +9,7 @@ export default function Extra() {
       initial="verticalHidden"
       whileInView="verticalVisible"
       viewport={{ once: true }}
-      variants={motionVariant}
+      variants={containerVariantsV0}
       id="extra"
     >
       <h2 className="mt-8 text-3xl font-semibold">Pics :)</h2>
