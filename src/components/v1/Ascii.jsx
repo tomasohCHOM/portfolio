@@ -43,23 +43,23 @@ function createWeightedMatrix(drawingLines) {
   return weights;
 }
 
-function prim(weightedMatrix, start = [33, 159]) {
-  const M = weightedMatrix.length;
-  const N = weightedMatrix[0].length;
+function prim(weights, start = [33, 159]) {
+  const M = weights.length;
+  const N = weights[0].length;
 
   const seen = Array.from({ length: M }, () => Array(N).fill(false));
   const result = [];
 
   const pq = new PQ((a, b) => a.weight < b.weight);
   const [sr, sc] = start;
-  pq.push({ r: sr, c: sc, weight: 0, from: null });
+  pq.push({ r: sr, c: sc, weight: 0 });
 
   while (!pq.isEmpty()) {
-    const { r, c, weight, from } = pq.pop();
+    const { r, c, weight } = pq.pop();
     if (seen[r][c]) continue;
 
     seen[r][c] = true;
-    result.push({ r, c, weight, from });
+    result.push({ r, c, weight });
     for (const [dr, dc] of [
       [-1, 0],
       [1, 0],
@@ -70,8 +70,8 @@ function prim(weightedMatrix, start = [33, 159]) {
       const nc = c + dc;
       if (nr < 0 || nr >= M || nc < 0 || nc >= N || seen[nr][nc]) continue;
 
-      const edgeWeight = weightedMatrix[nr][nc];
-      pq.push({ r: nr, c: nc, weight: edgeWeight, from: [r, c] });
+      const edgeWeight = weights[nr][nc];
+      pq.push({ r: nr, c: nc, weight: edgeWeight });
     }
   }
   return result;
@@ -80,34 +80,43 @@ function prim(weightedMatrix, start = [33, 159]) {
 function drawAscii(ctx, width) {
   // TODO: Play with different screen sizes
   const initialX = width >= 1380 ? 800 : 50;
-  const initialY = width >= 1380 ? 70 : 400;
+  const initialY = width >= 800 ? 70 : 400;
 
-  const drawingLines = drawing.split("\n");
-
+  const drawingLines = drawing.replace(/\n$/, "").split("\n");
+  console.log(drawingLines[drawingLines.length - 1]);
   const weights = createWeightedMatrix(drawingLines);
 
-  ctx.fillStyle = "rgb(90, 93, 97)";
+  ctx.fillStyle = "rgb(40, 42, 47)";
   ctx.font = "2.1px monospace";
   ctx.textBaseline = "top";
-
   const lineHeight = 2;
 
   const order = prim(weights, [33, 159]);
+  const CHARS_PER_FRAME = 150;
+
   let i = 0;
-  const intervalId = setInterval(() => {
-    if (i >= order.length) {
-      clearInterval(intervalId);
-      return;
-    }
+  let rafId = null;
+  let cancelled = false;
 
-    for (let j = 0; j < 100 && i < order.length; j++) {
+  const animate = () => {
+    if (cancelled) return;
+
+    for (let k = 0; k < CHARS_PER_FRAME && i < order.length; k++) {
       const { r, c } = order[i];
-      const ch = drawingLines[r][c];
-
-      ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
+      ctx.fillText(drawingLines[r][c], initialX + c, initialY + r * lineHeight);
       i++;
     }
-  }, 1);
+
+    if (i < order.length) {
+      rafId = requestAnimationFrame(animate);
+    }
+  };
+
+  rafId = requestAnimationFrame(animate);
+  return () => {
+    cancelled = true;
+    if (rafId) cancelAnimationFrame(rafId);
+  };
 }
 
 export function AsciiArt() {
@@ -130,7 +139,8 @@ export function AsciiArt() {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, width, height);
 
-    drawAscii(ctx, width);
+    const cleanup = drawAscii(ctx, width);
+    return cleanup;
   }, [width, height]);
 
   return (
