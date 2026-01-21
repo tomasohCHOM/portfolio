@@ -1,23 +1,31 @@
+import { useEffect, useRef } from "react";
 import { DRAWINGS } from "@/lib/drawings";
 import { prim } from "@/lib/prim";
-import { useEffect, useRef, useState } from "react";
+import { useWindowSize } from "@/lib/windowSize";
 
-function useWindowSize() {
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== undefined ? window.innerWidth : 0,
-    height: typeof window !== undefined ? window.innerHeight : 0,
-  });
+const BG_COLOR = "rgb(252, 252, 252)";
+const FG_COLOR1 = "rgb(40, 42, 47)";
+const FG_COLOR2 = "rgb(180, 182, 187)";
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return windowSize;
+function getCoordsAndColor(width, height) {
+  // Maps minimum screen size to the calculated initialX value
+  const xMappings = [
+    [1536, 1536 + (width - 1536) / 2 - 450],
+    [1280, width - 450],
+    [1024, 700],
+    [768, 550],
+    [480, 200],
+  ];
+  let initialX = 100;
+  for (const [size, x] of xMappings) {
+    if (width >= size) {
+      initialX = x;
+      break;
+    }
+  }
+  const initialY = width >= 768 ? 100 : height - 450;
+  const fgColor = width >= 1024 ? FG_COLOR1 : FG_COLOR2;
+  return [initialX, initialY, fgColor];
 }
 
 function createWeightedMatrix(drawingLines) {
@@ -51,21 +59,17 @@ function initDrawing(drawingStr) {
   return { lines, order };
 }
 
-function drawAscii(ctx, width) {
-  // TODO: Play with different screen sizes
-  const initialX = width >= 1380 ? 800 : 50;
-  const initialY = width >= 800 ? 70 : 400;
-
-  const FG_COLOR = "rgb(40, 42, 47)";
-  const BG_COLOR = "rgb(252, 252, 252)";
+function drawAscii(ctx, width, height) {
+  const [initialX, initialY, fgColor] = getCoordsAndColor(width, height);
 
   ctx.font = "3px monospace";
   ctx.textBaseline = "top";
 
   const lineHeight = 2;
 
-  const CHARS_PER_FRAME = 150;
-  const HOLD_TIME = 7_000;
+  const CHARS_DRAWN_PER_FRAME = 150;
+  const CHARS_ERASED_PER_FRAME = 300;
+  const HOLD_TIME = 10_000;
   const PAUSE_AFTER_ERASE = 1_000;
 
   let rafId = null;
@@ -110,16 +114,14 @@ function drawAscii(ctx, width) {
     if (state === "pause" && now >= nextAt) {
       let lastIdx = drawingIdx;
       do {
-        console.log(DRAWINGS.length);
-        console.log(drawingIdx === lastIdx);
         drawingIdx = Math.floor(Math.random() * DRAWINGS.length);
       } while (DRAWINGS.length > 1 && drawingIdx === lastIdx);
       loadDrawing();
     }
 
     if (state === "drawing") {
-      ctx.fillStyle = FG_COLOR;
-      for (let k = 0; k < CHARS_PER_FRAME && i < order.length; k++) {
+      ctx.fillStyle = fgColor;
+      for (let k = 0; k < CHARS_DRAWN_PER_FRAME && i < order.length; k++) {
         const { r, c } = order[i];
         const ch = drawingLines[r][c];
         ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
@@ -128,7 +130,7 @@ function drawAscii(ctx, width) {
     }
     if (state === "erasing") {
       ctx.fillStyle = BG_COLOR;
-      for (let k = 0; k < CHARS_PER_FRAME && i >= 0; k++) {
+      for (let k = 0; k < CHARS_ERASED_PER_FRAME && i >= 0; k++) {
         const { r, c } = order[i];
         const ch = drawingLines[r][c];
         ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
@@ -168,14 +170,11 @@ export default function AsciiArt() {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, width, height);
 
-    const cleanup = drawAscii(ctx, width);
+    const cleanup = drawAscii(ctx, width, height);
     return cleanup;
   }, [width, height]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed -z-10 block top-0 left-2/12"
-    ></canvas>
+    <canvas ref={canvasRef} className="fixed -z-10 block inset-0"></canvas>
   );
 }
