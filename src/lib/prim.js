@@ -1,5 +1,24 @@
 import { PQ } from "@/lib/pq";
 
+export function createWeightedMatrix(drawingLines) {
+  const M = drawingLines.length;
+  const N = drawingLines[0].length;
+
+  const weights = Array.from({ length: M }, () => new Array(N).fill(0));
+  for (let r = 0; r < M; r++) {
+    for (let c = 0; c < N; c++) {
+      const weightR = Math.pow(r - M / 2, 2) / 100 + 10;
+      const weightC = Math.pow(c - N / 2, 2) / 100 + 10;
+      const chIdx = "@#%XO+=:-. ".indexOf(drawingLines[r][c]) + 1;
+      const weightChar = Math.random() * 67 + (chIdx - 1) * 67;
+
+      weights[r][c] = weightR + weightC + weightChar;
+    }
+  }
+
+  return weights;
+}
+
 export function prim(weights, start = [33, 159]) {
   const M = weights.length;
   const N = weights[0].length;

@@ -1,7 +1,21 @@
 import { useEffect, useRef } from "react";
 import { DRAWINGS } from "@/lib/drawings";
-import { prim } from "@/lib/prim";
+import { createWeightedMatrix, prim } from "@/lib/prim";
 import { useWindowSize } from "@/lib/windowSize";
+
+const DrawingState = {
+  DRAWING: "drawing",
+  WAITING: "waiting",
+  ERASING: "erasing",
+  PAUSING: "pausing",
+};
+
+const CHARS_DRAWN_PER_FRAME = 150;
+const CHARS_ERASED_PER_FRAME = 300;
+const HOLD_TIME = 10_000;
+const PAUSE_AFTER_ERASE = 1_000;
+
+const LINE_HEIGHT = 2;
 
 const BG_COLOR = "rgb(252, 252, 252)";
 const FG_COLOR1 = "rgb(40, 42, 47)";
@@ -28,29 +42,6 @@ function getCoordsAndColor(width, height) {
   return [initialX, initialY, fgColor];
 }
 
-function createWeightedMatrix(drawingLines) {
-  const M = drawingLines.length;
-  const N = drawingLines[0].length;
-
-  const weights = [];
-  for (let r = 0; r < M; r++) {
-    weights.push([]);
-    for (let c = 0; c < N; c++) {
-      const weightR = Math.pow(r - M / 2, 2) / 100 + 10;
-      const weightC = Math.pow(c - N / 2, 2) / 100 + 10;
-
-      const chIdx = "@#%XO+=:-. ".indexOf(drawingLines[r][c]) + 1;
-      const weightChar = Math.random() * 67 + (chIdx - 1) * 67;
-
-      const finalWeight = weightR + weightC + weightChar;
-
-      weights[weights.length - 1].push(finalWeight);
-    }
-  }
-
-  return weights;
-}
-
 function initDrawing(drawingStr) {
   const lines = drawingStr.replace(/\n$/, "").split("\n");
   const weights = createWeightedMatrix(lines);
@@ -65,18 +56,11 @@ function drawAscii(ctx, width, height) {
   ctx.font = "3px monospace";
   ctx.textBaseline = "top";
 
-  const lineHeight = 2;
-
-  const CHARS_DRAWN_PER_FRAME = 150;
-  const CHARS_ERASED_PER_FRAME = 300;
-  const HOLD_TIME = 10_000;
-  const PAUSE_AFTER_ERASE = 1_000;
-
   let rafId = null;
   let cancelled = false;
 
   let i = 0;
-  let state = "drawing";
+  let drawingState = DrawingState.DRAWING;
   let reverseAt = 0;
   let nextAt = 0;
 
@@ -88,7 +72,7 @@ function drawAscii(ctx, width, height) {
     ({ lines: drawingLines, order } = initDrawing(next));
 
     i = 0;
-    state = "drawing";
+    drawingState = DrawingState.DRAWING;
     reverseAt = performance.now() + HOLD_TIME;
   };
 
@@ -97,21 +81,21 @@ function drawAscii(ctx, width, height) {
   const animate = (now) => {
     if (cancelled) return;
 
-    if (state === "drawing" && i >= order.length) {
-      state = "waiting";
+    if (drawingState === DrawingState.DRAWING && i >= order.length) {
+      drawingState = DrawingState.WAITING;
     }
 
-    if (state === "waiting" && now >= reverseAt) {
-      state = "erasing";
+    if (drawingState === DrawingState.WAITING && now >= reverseAt) {
+      drawingState = DrawingState.ERASING;
       i = order.length - 1;
     }
 
-    if (state === "erasing" && i < 0) {
-      state = "pause";
+    if (drawingState === DrawingState.ERASING && i < 0) {
+      drawingState = DrawingState.PAUSING;
       nextAt = now + PAUSE_AFTER_ERASE;
     }
 
-    if (state === "pause" && now >= nextAt) {
+    if (drawingState === DrawingState.PAUSING && now >= nextAt) {
       let lastIdx = drawingIdx;
       do {
         drawingIdx = Math.floor(Math.random() * DRAWINGS.length);
@@ -119,23 +103,23 @@ function drawAscii(ctx, width, height) {
       loadDrawing();
     }
 
-    if (state === "drawing") {
+    if (drawingState === DrawingState.DRAWING) {
       ctx.fillStyle = fgColor;
       for (let k = 0; k < CHARS_DRAWN_PER_FRAME && i < order.length; k++) {
         const { r, c } = order[i];
         const ch = drawingLines[r][c];
-        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
+        ctx.fillText(ch, initialX + c, initialY + r * LINE_HEIGHT);
         i++;
       }
     }
-    if (state === "erasing") {
+    if (drawingState === DrawingState.ERASING) {
       ctx.fillStyle = BG_COLOR;
       for (let k = 0; k < CHARS_ERASED_PER_FRAME && i >= 0; k++) {
         const { r, c } = order[i];
         const ch = drawingLines[r][c];
-        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
-        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
-        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
+        ctx.fillText(ch, initialX + c, initialY + r * LINE_HEIGHT);
+        ctx.fillText(ch, initialX + c, initialY + r * LINE_HEIGHT);
+        ctx.fillText(ch, initialX + c, initialY + r * LINE_HEIGHT);
         i--;
       }
     }
