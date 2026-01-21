@@ -1,11 +1,11 @@
+import { DRAWINGS } from "@/lib/drawings";
 import { prim } from "@/lib/prim";
-import drawing from "/ascii/sephiroth.txt?raw";
 import { useEffect, useRef, useState } from "react";
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
+    width: typeof window !== undefined ? window.innerWidth : 0,
+    height: typeof window !== undefined ? window.innerHeight : 0,
   });
 
   useEffect(() => {
@@ -43,38 +43,102 @@ function createWeightedMatrix(drawingLines) {
   return weights;
 }
 
+function initDrawing(drawingStr) {
+  const lines = drawingStr.replace(/\n$/, "").split("\n");
+  const weights = createWeightedMatrix(lines);
+  const order = prim(weights, [33, 159]);
+
+  return { lines, order };
+}
+
 function drawAscii(ctx, width) {
   // TODO: Play with different screen sizes
   const initialX = width >= 1380 ? 800 : 50;
   const initialY = width >= 800 ? 70 : 400;
 
-  const drawingLines = drawing.replace(/\n$/, "").split("\n");
-  const weights = createWeightedMatrix(drawingLines);
+  const FG_COLOR = "rgb(40, 42, 47)";
+  const BG_COLOR = "rgb(252, 252, 252)";
 
-  ctx.fillStyle = "rgb(40, 42, 47)";
   ctx.font = "3px monospace";
   ctx.textBaseline = "top";
+
   const lineHeight = 2;
 
-  const order = prim(weights, [33, 159]);
   const CHARS_PER_FRAME = 150;
+  const HOLD_TIME = 7_000;
+  const PAUSE_AFTER_ERASE = 1_000;
 
-  let i = 0;
   let rafId = null;
   let cancelled = false;
 
-  const animate = () => {
+  let i = 0;
+  let state = "drawing";
+  let reverseAt = 0;
+  let nextAt = 0;
+
+  let drawingIdx = Math.floor(Math.random() * DRAWINGS.length);
+  let drawingLines, order;
+
+  const loadDrawing = () => {
+    const next = DRAWINGS[drawingIdx];
+    ({ lines: drawingLines, order } = initDrawing(next));
+
+    i = 0;
+    state = "drawing";
+    reverseAt = performance.now() + HOLD_TIME;
+  };
+
+  loadDrawing();
+
+  const animate = (now) => {
     if (cancelled) return;
 
-    for (let k = 0; k < CHARS_PER_FRAME && i < order.length; k++) {
-      const { r, c } = order[i];
-      ctx.fillText(drawingLines[r][c], initialX + c, initialY + r * lineHeight);
-      i++;
+    if (state === "drawing" && i >= order.length) {
+      state = "waiting";
     }
 
-    if (i < order.length) {
-      rafId = requestAnimationFrame(animate);
+    if (state === "waiting" && now >= reverseAt) {
+      state = "erasing";
+      i = order.length - 1;
     }
+
+    if (state === "erasing" && i < 0) {
+      state = "pause";
+      nextAt = now + PAUSE_AFTER_ERASE;
+    }
+
+    if (state === "pause" && now >= nextAt) {
+      let lastIdx = drawingIdx;
+      do {
+        console.log(DRAWINGS.length);
+        console.log(drawingIdx === lastIdx);
+        drawingIdx = Math.floor(Math.random() * DRAWINGS.length);
+      } while (DRAWINGS.length > 1 && drawingIdx === lastIdx);
+      loadDrawing();
+    }
+
+    if (state === "drawing") {
+      ctx.fillStyle = FG_COLOR;
+      for (let k = 0; k < CHARS_PER_FRAME && i < order.length; k++) {
+        const { r, c } = order[i];
+        const ch = drawingLines[r][c];
+        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
+        i++;
+      }
+    }
+    if (state === "erasing") {
+      ctx.fillStyle = BG_COLOR;
+      for (let k = 0; k < CHARS_PER_FRAME && i >= 0; k++) {
+        const { r, c } = order[i];
+        const ch = drawingLines[r][c];
+        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
+        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
+        ctx.fillText(ch, initialX + c, initialY + r * lineHeight);
+        i--;
+      }
+    }
+
+    rafId = requestAnimationFrame(animate);
   };
 
   rafId = requestAnimationFrame(animate);
