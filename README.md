@@ -1,12 +1,7 @@
-# Tomas Oh Portfolio Website
+# Portfolio Website
 
-My portfolio website developed using the following tech stack:
-
-- Next.js
-- TypeScript
-- TailwindCSS
-- Framer Motion
+[![tomasohCHOM's Portfolio](public/portfolio.gif)](https://chom.vercel.app/)
 
 ---
 
-**Developed with 🔥 by Tomas Oh @ 2024**
+**Developed with 🔥 by Tomas Oh @ 2026**
