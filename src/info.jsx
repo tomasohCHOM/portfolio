@@ -120,7 +120,7 @@ export const links = (iconSize) => [
   },
   {
     name: "email",
-    href: "mailto:tomas021104@gmail.com",
+    href: "mailto:chomacito@gmail.com",
     icon: <FaPaperPlane size={iconSize} />,
   },
   {
